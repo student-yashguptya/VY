@@ -1,9 +1,10 @@
 import React from 'react';
 
-const Navbar = () => (
-  <nav>
-    VY Software Company
-  </nav>
-);
-
-export default Navbar;
+export default function Navbar() {
+  return (
+    <nav>
+      VY Software Company
+      <span>Elevate Your Career</span>
+    </nav>
+  );
+}

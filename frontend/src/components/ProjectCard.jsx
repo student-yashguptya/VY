@@ -1,9 +1,9 @@
 import React from 'react';
 
-const ProjectCard = ({ project }) => (
-  <div className="card" role="article" aria-label={`Project: ${project}`}>
-    <p>{project}</p>
-  </div>
-);
-
-export default ProjectCard;
+export default function ProjectCard({ project }) {
+  return (
+    <div className="card project-card" aria-label={`Project: ${project}`}>
+      <p>{project}</p>
+    </div>
+  );
+}

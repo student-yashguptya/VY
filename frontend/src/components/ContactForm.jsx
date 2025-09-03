@@ -1,24 +1,31 @@
 import React, { useState } from 'react';
 import emailjs from '@emailjs/browser';
 
-const ContactForm = () => {
+export default function ContactForm() {
   const [formData, setFormData] = useState({
     user_name: '',
     user_email: '',
     message: '',
   });
-  const [statusMessage, setStatusMessage] = useState('');
+  const [statusMsg, setStatusMsg] = useState('');
 
-  const handleChange = e => setFormData({...formData, [e.target.name]: e.target.value});
+  const handleChange = e =>
+    setFormData({ ...formData, [e.target.name]: e.target.value });
 
   const sendEmail = e => {
     e.preventDefault();
-    emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', formData, 'YOUR_PUBLIC_KEY')
+    emailjs
+      .send(
+        'YOUR_SERVICE_ID',
+        'YOUR_TEMPLATE_ID',
+        formData,
+        'YOUR_PUBLIC_KEY'
+      )
       .then(() => {
-        setStatusMessage('Message sent successfully!');
+        setStatusMsg('Message sent successfully!');
         setFormData({ user_name: '', user_email: '', message: '' });
       })
-      .catch(() => setStatusMessage('Failed to send message, please try again later.'));
+      .catch(() => setStatusMsg('Failed to send message. Please try again.'));
   };
 
   return (
@@ -28,32 +35,27 @@ const ContactForm = () => {
         type="text"
         name="user_name"
         placeholder="Name"
+        required
         value={formData.user_name}
         onChange={handleChange}
-        aria-required="true"
-        required
       />
       <input
         type="email"
         name="user_email"
         placeholder="Email"
+        required
         value={formData.user_email}
         onChange={handleChange}
-        aria-required="true"
-        required
       />
       <textarea
         name="message"
         placeholder="Your message"
+        required
         value={formData.message}
         onChange={handleChange}
-        aria-required="true"
-        required
       />
       <button type="submit">Send</button>
-      {statusMessage && <p role="alert">{statusMessage}</p>}
+      {statusMsg && <p role="alert">{statusMsg}</p>}
     </form>
   );
-};
-
-export default ContactForm;
+}
