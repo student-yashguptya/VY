@@ -25,8 +25,7 @@ function App() {
           delivering smart digital solutions that transform businesses.
         </p>
         <p>
-          From ERP systems to booking platforms, our mission is to bring
-          innovation, efficiency, and impact.
+          VY is a service and product-based software company specializing in management websites, ERP systems, and booking platforms. We strive to deliver high-quality projects that empower businesses and educational institutions. From ERP systems to booking platforms, our mission is to drive innovation, enhance efficiency, and create meaningful impact.
         </p>
       </section>
 
