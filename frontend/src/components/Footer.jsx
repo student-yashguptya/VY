@@ -1,9 +1,12 @@
-import React from 'react';
+import React from "react";
 
-export default function Footer() {
+function Footer() {
   return (
-    <footer>
-      © 2025 VY Software Company. All rights reserved.
+    <footer className="footer">
+      <p>© 2025 VY. All rights reserved.</p>
+      <p>Follow us: LinkedIn | Twitter | Instagram</p>
     </footer>
   );
 }
+
+export default Footer;

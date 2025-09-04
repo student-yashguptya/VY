@@ -1,21 +1,15 @@
-import React from 'react';
+import React from "react";
 
-export default function LeadershipCard({ members }) {
+function LeadershipCard({ name, role, phone, email, image }) {
   return (
-    <section className="card leadership-card" aria-labelledby="leadership-title" tabIndex={-1}>
-      <h3 id="leadership-title" className="section-heading">CEO & Co-founder</h3>
-      <div className="members">
-        {members.map(({ name, phone, email }, i) => (
-          <div key={i}>
-            <p><strong>Name:</strong> {name}</p>
-            <p><strong>Phone:</strong> {phone}</p>
-            <p>
-              <strong>Email:</strong>{' '}
-              <a href={`mailto:${email}`}>{email}</a>
-            </p>
-          </div>
-        ))}
-      </div>
-    </section>
+    <div className="leader-card">
+      <img src={image} alt={name} className="leader-img" />
+      <h3>{name}</h3>
+      <p><strong>{role}</strong></p>
+      <p>📞 {phone}</p>
+      <p>✉️ {email}</p>
+    </div>
   );
 }
+
+export default LeadershipCard;

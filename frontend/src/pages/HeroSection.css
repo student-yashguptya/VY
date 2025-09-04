@@ -1,0 +1,34 @@
+.hero-container {
+  position: relative;
+  width: 100%;
+  height: 100vh; /* Full page height */
+  overflow: hidden;
+}
+
+.hero-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensures video covers full background */
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: white;
+  z-index: 2;
+}
+
+.hero-overlay h1 {
+  font-size: 3.5rem;
+  font-weight: bold;
+  color: #00bcd4; /* Accent blue */
+  margin-bottom: 15px;
+}
+
+.hero-overlay p {
+  font-size: 1.2rem;
+  font-weight: 300;
+}

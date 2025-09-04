@@ -1,9 +1,12 @@
-import React from 'react';
+import React from "react";
 
-export default function ProjectCard({ project }) {
+function ProjectCard({ title, description }) {
   return (
-    <div className="card project-card" aria-label={`Project: ${project}`}>
-      <p>{project}</p>
+    <div className="project-card">
+      <h3>{title}</h3>
+      <p>{description}</p>
     </div>
   );
 }
+
+export default ProjectCard;
