@@ -54,7 +54,7 @@ function App() {
           />
           <LeadershipCard
             name="Yash Gupta"
-            role="Co-founder"
+            role="CEO & Co-founder"
             phone="9520102418"
             email="placementhub9@gmail.com"
             image={yashImg}
