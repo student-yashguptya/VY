@@ -15,7 +15,6 @@ function App() {
   return (
     <div>
       <Navbar />
-
       <HeroSection />
 
       {/* About Section */}
@@ -24,13 +23,10 @@ function App() {
         <p>
           At <strong>VY</strong>, we are a service and product-based company
           delivering smart digital solutions that transform businesses.
-          From enterprise ERP systems to customer-facing applications,
-          our mission is to bring innovation, efficiency, and impact.
         </p>
         <p>
-          With a strong belief in technology-driven growth, we empower
-          institutions, startups, and enterprises to streamline their
-          operations and achieve more.
+          From ERP systems to booking platforms, our mission is to bring
+          innovation, efficiency, and impact.
         </p>
       </section>
 
@@ -38,22 +34,10 @@ function App() {
       <section id="projects" className="projects">
         <h2>Our Projects</h2>
         <div className="project-list">
-          <ProjectCard
-            title="Allin1 Management Website"
-            description="An integrated platform to handle HR, finance, and workflow management seamlessly."
-          />
-          <ProjectCard
-            title="College & Company Placement ERP"
-            description="A robust ERP system designed to automate campus recruitment and corporate hiring processes."
-          />
-          <ProjectCard
-            title="BookMyRoom App & Website"
-            description="A modern booking system for hotels, hostels, and shared accommodations."
-          />
-          <ProjectCard
-            title="E-Commerce Store Builder"
-            description="Create your own online store with customizable templates and secure payment options."
-          />
+          <ProjectCard title="Allin1 Management Website" description="An integrated platform to handle HR, finance, and workflow management seamlessly." />
+          <ProjectCard title="College & Company Placement ERP" description="A robust ERP system designed to automate campus recruitment and corporate hiring processes." />
+          <ProjectCard title="BookMyRoom App & Website" description="A modern booking system for hotels, hostels, and shared accommodations." />
+          <ProjectCard title="E-Commerce Store Builder" description="Create your own online store with customizable templates and secure payment options." />
         </div>
       </section>
 
@@ -86,6 +70,30 @@ function App() {
           Fill out the form below and we’ll get back to you within 24 hours.
         </p>
         <ContactForm />
+      </section>
+
+      {/* Connect Section */}
+      <section id="connect" className="connect">
+        <h2>Connect With Us</h2>
+        <p>Follow us on social media to stay updated and connected!</p>
+        <div className="social-links">
+          <a
+            href="https://www.instagram.com/vy_software/?next=%2F&hl=en"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="social-icon instagram"
+          >
+            <i className="fab fa-instagram"></i> Instagram
+          </a>
+          <a
+            href="https://www.linkedin.com/company/108454811/admin/page-posts/published/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="social-icon linkedin"
+          >
+            <i className="fab fa-linkedin"></i> LinkedIn
+          </a>
+        </div>
       </section>
 
       <Footer />

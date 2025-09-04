@@ -1,4 +1,4 @@
-:root {
+/* :root {
   --accent: #16c2d5;
   --accent2: #007cf0;
   --bg: #e9f2fb;
@@ -214,4 +214,4 @@ form p[role="alert"] {
 @keyframes slideDown {
   from { opacity: 0; transform: translateY(-30px);}
   to { opacity: 1; transform: translateY(0);}
-}
+} */
