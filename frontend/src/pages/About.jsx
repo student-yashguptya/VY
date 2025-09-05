@@ -1,6 +1,7 @@
 import React from 'react';
 import '../App.css';
 import teamWorking from '../assets/team-working.png';
+import planning from '../assets/planning.png';
 
 export default function About() {
   return (
@@ -76,42 +77,90 @@ export default function About() {
 
       {/* Process Section */}
       <section className="process-section" id="process">
-        <div className="process-container">
-          <h2 className="process-title">Our Process</h2>
-          <p className="process-subtitle">
-            A step-by-step approach to deliver reliable and high-quality software solutions.
-          </p>
+        <div className="process-box">
+          {/* Left - Image and Intro */}
+          <div className="process-image-col">
+            <img src={planning} alt="planning" className="process-photo" />
+            <p className="process-desc">
+             As a software and service company, VY follows a comprehensive, value-driven methodology across every engagement—ensuring that each solution is smooth, strategic, and successful from discovery through launch
+            </p>
+            <button className="process-cta-btn">Start your work</button>
+          </div>
 
-          <div className="process-grid">
-            <div className="process-card">
-              <span className="process-icon">🔎</span>
-              <h3>Discovery</h3>
-              <p>We take time to understand your goals, challenges, and expectations to build a tailored plan.</p>
-            </div>
-            <div className="process-card">
-              <span className="process-icon">📝</span>
-              <h3>Planning</h3>
-              <p>We outline project milestones, timelines, and strategies ensuring transparency from the start.</p>
-            </div>
-            <div className="process-card">
-              <span className="process-icon">🎨</span>
-              <h3>Design</h3>
-              <p>Our creative team builds engaging, user-friendly designs aligned with your brand identity.</p>
-            </div>
-            <div className="process-card">
-              <span className="process-icon">💻</span>
-              <h3>Development</h3>
-              <p>Using modern technologies, we craft scalable, secure, and efficient software solutions.</p>
-            </div>
-            <div className="process-card">
-              <span className="process-icon">🧪</span>
-              <h3>Testing</h3>
-              <p>We thoroughly test each feature to ensure flawless functionality, speed, and reliability.</p>
-            </div>
-            <div className="process-card">
-              <span className="process-icon">🚀</span>
-              <h3>Launch</h3>
-              <p>We deliver the final product and provide post-launch support to ensure smooth operation.</p>
+          {/* Right - Steps */}
+          <div className="process-steps-col">
+            <div className="process-steps-list">
+              <div className="process-step">
+                <span className="process-step-icon">🔎</span>
+                <div className="process-step-content">
+                  <h4>Discovery</h4>
+                  <p>
+                    During the discovery phase, VY takes the time to get to know key
+                    stakeholders, understand project goals, and define clear success
+                    criteria. This collaborative approach sets a strong foundation
+                    for the rest of the engagement.
+                  </p>
+                </div>
+              </div>
+
+              <div className="process-step">
+                <span className="process-step-icon">🗂️</span>
+                <div className="process-step-content">
+                  <h4>Planning</h4>
+                  <p>
+                    Clear timelines, requirements, and priorities drive the project
+                    plan to ensure success—every step documented for transparency
+                    and client buy-in.
+                  </p>
+                </div>
+              </div>
+
+              <div className="process-step">
+                <span className="process-step-icon">🎨</span>
+                <div className="process-step-content">
+                  <h4>Design</h4>
+                  <p>
+                    Creative and collaborative interface prototyping sets the design
+                    phase apart, with feedback rounds and usability in focus before
+                    build-out begins.
+                  </p>
+                </div>
+              </div>
+
+              <div className="process-step">
+                <span className="process-step-icon">💻</span>
+                <div className="process-step-content">
+                  <h4>Development</h4>
+                  <p>
+                    Once the strategies are approved, VY begins the environment setup
+                    and core software engineering—always agile, modular, and secure.
+                  </p>
+                </div>
+              </div>
+
+              <div className="process-step">
+                <span className="process-step-icon">🧪</span>
+                <div className="process-step-content">
+                  <h4>Testing</h4>
+                  <p>
+                    Before the solution is launched, rigorous diagnostics identify
+                    bugs, performance gaps, and usability issues—each resolved for a
+                    seamless final product.
+                  </p>
+                </div>
+              </div>
+
+              <div className="process-step">
+                <span className="process-step-icon">🚀</span>
+                <div className="process-step-content">
+                  <h4>Launch</h4>
+                  <p>
+                    With the new system or website completed, VY handles the launch
+                    and continues to provide training, support, and strategic insight
+                    for ongoing success.
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
