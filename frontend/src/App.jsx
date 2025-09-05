@@ -10,6 +10,7 @@ import ContactPage from "./components/ContactForm";
 
 import vishalImg from "./assets/vishal.jpg";
 import yashImg from "./assets/yash.jpg";
+import About from "./pages/About";
 
 function ScrollToSection() {
   const location = useLocation();
@@ -33,10 +34,8 @@ function HomePage() {
       <HeroSection />
 
       <section id="about" className="about">
-        <h2>About Us</h2>
-        <p>At <strong>VY</strong>, we are a service and product-based company delivering smart digital solutions that transform businesses.</p>
-        <p>VY is a service and product-based software company specializing in management websites, ERP systems, and booking platforms. We strive to deliver high-quality projects that empower businesses and educational institutions. From ERP systems to booking platforms, our mission is to drive innovation, enhance efficiency, and create meaningful impact.</p>
-      </section>
+        <About />
+        </section>
 
       {/* Projects Section */}
 <section id="projects" className="projects">

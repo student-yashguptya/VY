@@ -1,14 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { FaEnvelope, FaLinkedin, FaInstagram, FaMapMarkerAlt, FaUsers, FaProjectDiagram } from "react-icons/fa";
 
 function ContactPage() {
   return (
     <div id="contact-page" style={styles.container}>
       {/* Left Column: Contact Form */}
       <form className="contact-form" style={styles.form}>
-        <h2 style={styles.title}>Connect with us</h2>
-        <p style={styles.subtitle}>How can we help?</p>
-        <p style={styles.note}>All fields are required</p>
+        <div style={styles.formHeader}>
+          <h2 style={styles.title}>Connect with us</h2>
+          <p style={styles.subtitle}>We’d love to hear from you 💬</p>
+        </div>
 
         <input type="text" placeholder="First Name" required style={styles.input} />
         <input type="text" placeholder="Last Name" required style={styles.input} />
@@ -25,14 +27,10 @@ function ContactPage() {
         <textarea
           placeholder="Message"
           required
-          style={{ ...styles.input, height: "100px" }}
+          style={{ ...styles.input, height: "120px" }}
         ></textarea>
 
-        {/* Fake reCAPTCHA placeholder */}
-        <div style={styles.captchaBox}>
-          <input type="checkbox" />{" "}
-          <span style={{ marginLeft: "8px" }}>I'm not a robot</span>
-        </div>
+       
 
         <div style={styles.checkboxContainer}>
           <input type="checkbox" required />
@@ -45,7 +43,7 @@ function ContactPage() {
         </div>
 
         <button type="submit" style={styles.button}>
-          Send Message
+          Send Message 🚀
         </button>
       </form>
 
@@ -53,55 +51,36 @@ function ContactPage() {
       <div style={styles.infoBox}>
         <h3 style={styles.infoTitle}>More ways to connect</h3>
         <ul style={styles.infoList}>
-          <li>
-            <strong>Email us directly</strong>
-            <p>
-              <a href="mailto:placementhub9@gmail.com" style={styles.link}>
-                placementhub9@gmail.com
-              </a>
-            </p>
+          <li style={styles.infoItem}>
+            <FaEnvelope style={styles.icon} /> 
+            <a href="mailto:placementhub9@gmail.com" style={styles.link}>
+              placementhub9@gmail.com
+            </a>
           </li>
-          <li>
-            <strong>Follow us on social media</strong>
-            <p>
-              <a
-                href="https://www.linkedin.com/company/108454811/admin/page-posts/published/"
-                style={styles.link}
-              >
-                LinkedIn
-              </a>{" "}
-              |{" "}
-              <a
-                href="https://www.instagram.com/vy_software/?next=%2F&hl=en"
-                style={styles.link}
-              >
-                Instagram
-              </a>
-            </p>
+          <li style={styles.infoItem}>
+            <FaLinkedin style={styles.icon} /> 
+            <a href="https://www.linkedin.com/company/108454811/admin/page-posts/published/" style={styles.link}>LinkedIn</a>
+            <span style={{ margin: "0 5px" }}>|</span>
+            <FaInstagram style={styles.icon} /> 
+            <a href="https://www.instagram.com/vy_software/?next=%2F&hl=en" style={styles.link}>Instagram</a>
           </li>
-          <li>
-            <strong>Visit our office</strong>
-            <p>
-              <a href="https://www.google.com/maps/place/Bareilly,+Uttar+Pradesh/@28.3762051,79.3395384,12z/data=!3m1!4b1!4m6!3m5!1s0x39a007334d02998d:0x5b9d44cf31ee87f!8m2!3d28.3670355!4d79.4304381!16zL20vMDN5N2Nu?entry=ttu&g_ep=EgoyMDI1MDkwMi4wIKXMDSoASAFQAw%3D%3D" style={styles.link}>
-                Find our location
-              </a>
-            </p>
+          <li style={styles.infoItem}>
+            <FaMapMarkerAlt style={styles.icon} /> 
+            <a href="https://www.google.com/maps/place/Bareilly,+Uttar+Pradesh/" style={styles.link}>
+              Find our location
+            </a>
           </li>
-          <li>
-            <strong>Explore our work</strong>
-            <p>
-              <Link to="/" state={{ scrollTo: "projects" }} style={styles.link}>
-                Check our latest projects
-              </Link>
-            </p>
+          <li style={styles.infoItem}>
+            <FaProjectDiagram style={styles.icon} /> 
+            <Link to="/" state={{ scrollTo: "projects" }} style={styles.link}>
+              Check our latest projects
+            </Link>
           </li>
-          <li>
-            <strong>Meet our leadership</strong>
-            <p>
-              <Link to="/" state={{ scrollTo: "leadership" }} style={styles.link}>
-                Know more about our team
-              </Link>
-            </p>
+          <li style={styles.infoItem}>
+            <FaUsers style={styles.icon} /> 
+            <Link to="/" state={{ scrollTo: "leadership" }} style={styles.link}>
+              Know more about our team
+            </Link>
           </li>
         </ul>
       </div>
@@ -109,64 +88,57 @@ function ContactPage() {
   );
 }
 
-// ✅ Responsive styles
+// ✅ Improved Interactive Styles
 const styles = {
   container: {
     display: "flex",
-    flexWrap: "wrap", // ensures stacking on small screens
+    flexWrap: "wrap",
     justifyContent: "space-between",
     alignItems: "flex-start",
-    maxWidth: "1000px",
-    margin: "40px auto",
+    maxWidth: "1100px",
+    margin: "50px auto",
     padding: "20px",
-    gap: "20px",
+    gap: "25px",
   },
   form: {
-    flex: "1 1 400px", // grow/shrink with min width
-    padding: "20px",
-    borderRadius: "8px",
-    background: "#f9f9f9",
-    boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
+    flex: "1 1 480px",
+    padding: "25px",
+    borderRadius: "12px",
+    background: "linear-gradient(135deg, #f9f9f9, #ffffff)",
+    boxShadow: "0 4px 15px rgba(0,0,0,0.1)",
     display: "flex",
     flexDirection: "column",
+    transition: "all 0.3s ease-in-out",
+  },
+  formHeader: {
+    marginBottom: "15px",
+    borderBottom: "2px solid #0073e6",
+    paddingBottom: "10px",
   },
   title: {
-    fontSize: "24px",
+    fontSize: "26px",
     fontWeight: "bold",
-    marginBottom: "5px",
-    color: "#333",
+    color: "#222",
   },
   subtitle: {
-    fontSize: "16px",
-    marginBottom: "5px",
+    fontSize: "15px",
     color: "#555",
   },
-  note: {
-    fontSize: "12px",
-    marginBottom: "15px",
-    color: "#888",
-  },
   input: {
-    marginBottom: "12px",
-    padding: "10px",
-    borderRadius: "5px",
+    marginBottom: "14px",
+    padding: "12px",
+    borderRadius: "6px",
     border: "1px solid #ccc",
-    fontSize: "14px",
+    fontSize: "15px",
     width: "100%",
+    outline: "none",
+    transition: "border 0.2s ease, box-shadow 0.2s ease",
   },
-  captchaBox: {
-    border: "1px solid #ccc",
-    borderRadius: "5px",
-    padding: "10px",
-    marginBottom: "12px",
-    display: "flex",
-    alignItems: "center",
-    background: "#fff",
-  },
+  
   checkboxContainer: {
     display: "flex",
     alignItems: "center",
-    marginBottom: "10px",
+    marginBottom: "14px",
   },
   label: {
     marginLeft: "8px",
@@ -175,36 +147,53 @@ const styles = {
   },
   link: {
     color: "#0073e6",
+    fontWeight: "500",
     textDecoration: "none",
   },
   button: {
-    background: "#0073e6",
+    background: "linear-gradient(135deg, #0073e6, #00bcd4)",
     color: "#fff",
-    padding: "12px",
+    padding: "14px",
     border: "none",
-    borderRadius: "6px",
+    borderRadius: "8px",
     cursor: "pointer",
     fontSize: "16px",
     fontWeight: "bold",
+    transition: "transform 0.2s ease, box-shadow 0.2s ease",
+  },
+  buttonHover: {
+    transform: "translateY(-2px)",
+    boxShadow: "0 6px 12px rgba(0,0,0,0.2)",
   },
   infoBox: {
-    flex: "1 1 300px", // responsive sizing
-    padding: "20px",
+    flex: "1 1 320px",
+    padding: "25px",
     background: "#fff",
-    borderRadius: "8px",
-    boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
+    borderRadius: "12px",
+    boxShadow: "0 4px 15px rgba(0,0,0,0.08)",
   },
   infoTitle: {
-    fontSize: "20px",
+    fontSize: "22px",
     fontWeight: "bold",
-    marginBottom: "15px",
-    color: "#333",
-    textAlign: "left",
+    marginBottom: "18px",
+    color: "#222",
   },
   infoList: {
     listStyle: "none",
     padding: 0,
     margin: 0,
+    lineHeight: "1.8em",
+  },
+  infoItem: {
+    marginBottom: "12px",
+    display: "flex",
+    alignItems: "center",
+    fontSize: "15px",
+    color: "#333",
+  },
+  icon: {
+    marginRight: "10px",
+    color: "#0073e6",
   },
 };
 

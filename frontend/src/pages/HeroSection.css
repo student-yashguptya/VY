@@ -1,34 +1,69 @@
 .hero-container {
   position: relative;
   width: 100%;
-  height: 100vh; /* Full page height */
+  height: 100vh; /* Full screen height */
   overflow: hidden;
 }
 
 .hero-video {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Ensures video covers full background */
+  object-fit: cover; /* Fill the container */
+  z-index: 1;
 }
 
 .hero-overlay {
-  position: absolute;
+  position: relative;
+  z-index: 2;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
+  padding: 0 20px; /* Prevent text from touching edges on small screens */
   color: white;
-  z-index: 2;
 }
 
+/* Desktop styles */
 .hero-overlay h1 {
   font-size: 3.5rem;
   font-weight: bold;
-  color: #00bcd4; /* Accent blue */
+  color: #00bcd4;
   margin-bottom: 15px;
 }
 
 .hero-overlay p {
   font-size: 1.2rem;
   font-weight: 300;
+}
+
+/* ✅ Mobile responsiveness */
+@media (max-width: 768px) {
+  .hero-container {
+    height: 80vh; /* Not too tall on mobile */
+  }
+
+  .hero-overlay h1 {
+    font-size: 2rem;
+  }
+
+  .hero-overlay p {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-container {
+    height: 70vh; /* Adjust for small phones */
+  }
+
+  .hero-overlay h1 {
+    font-size: 1.6rem;
+  }
+
+  .hero-overlay p {
+    font-size: 0.9rem;
+  }
 }
