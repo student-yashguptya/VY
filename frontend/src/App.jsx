@@ -6,7 +6,9 @@ import ProjectCard from "./components/ProjectCard";
 import LeadershipCard from "./components/LeadershipCard";
 import Footer from "./components/Footer";
 import HeroSection from "./components/HeroSection";
-import ContactPage from "./components/ContactForm";
+import Contactpage from "./components/ContactForm";
+
+
 
 import vishalImg from "./assets/vishal.jpg";
 import yashImg from "./assets/yash.jpg";
@@ -90,7 +92,7 @@ function App() {
       <ScrollToSection />
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/contact" element={<ContactPage />} />
+        <Route path="/contact" element={<Contactpage />} />
 
       </Routes>
     </Router>

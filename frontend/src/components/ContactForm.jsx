@@ -1,22 +1,54 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 import { Link } from "react-router-dom";
+import emailjs from "emailjs-com";
 import { FaEnvelope, FaLinkedin, FaInstagram, FaMapMarkerAlt, FaUsers, FaProjectDiagram } from "react-icons/fa";
 
-function ContactPage() {
+function Contactpage() {
+  const form = useRef();
+  const [isSending, setIsSending] = useState(false);
+  const [status, setStatus] = useState("");
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+    setIsSending(true);
+    setStatus("");
+
+    emailjs
+      .sendForm(
+        "service_1o5f24k", // replace with your EmailJS service ID
+        "template_g2ssv36", // replace with your template ID
+        form.current,
+        "Bv6VThRG1nXxKihsD" // replace with your public key
+      )
+      .then(
+        (result) => {
+          console.log("SUCCESS!", result.text);
+          setStatus("✅ Message sent successfully!");
+          setIsSending(false);
+          form.current.reset();
+        },
+        (error) => {
+          console.log("FAILED...", error.text);
+          setStatus("❌ Failed to send. Please try again.");
+          setIsSending(false);
+        }
+      );
+  };
+
   return (
     <div id="contact-page" style={styles.container}>
       {/* Left Column: Contact Form */}
-      <form className="contact-form" style={styles.form}>
+      <form ref={form} onSubmit={sendEmail} className="contact-form" style={styles.form}>
         <div style={styles.formHeader}>
           <h2 style={styles.title}>Connect with us</h2>
           <p style={styles.subtitle}>We’d love to hear from you 💬</p>
         </div>
 
-        <input type="text" placeholder="First Name" required style={styles.input} />
-        <input type="text" placeholder="Last Name" required style={styles.input} />
-        <input type="email" placeholder="E-mail" required style={styles.input} />
+        <input type="text" name="first_name" placeholder="First Name" required style={styles.input} />
+        <input type="text" name="last_name" placeholder="Last Name" required style={styles.input} />
+        <input type="email" name="user_email" placeholder="E-mail" required style={styles.input} />
 
-        <select required style={styles.input}>
+        <select name="subject" required style={styles.input}>
           <option value="">What can we help you with?</option>
           <option value="general">General Inquiry</option>
           <option value="support">Support</option>
@@ -25,12 +57,11 @@ function ContactPage() {
         </select>
 
         <textarea
+          name="message"
           placeholder="Message"
           required
           style={{ ...styles.input, height: "120px" }}
         ></textarea>
-
-       
 
         <div style={styles.checkboxContainer}>
           <input type="checkbox" required />
@@ -42,9 +73,11 @@ function ContactPage() {
           </label>
         </div>
 
-        <button type="submit" style={styles.button}>
-          Send Message 🚀
+        <button type="submit" style={styles.button} disabled={isSending}>
+          {isSending ? "Sending..." : "Send Message 🚀"}
         </button>
+
+        {status && <p style={{ marginTop: "10px", color: status.includes("✅") ? "green" : "red" }}>{status}</p>}
       </form>
 
       {/* Right Column: Website Info */}
@@ -52,32 +85,42 @@ function ContactPage() {
         <h3 style={styles.infoTitle}>More ways to connect</h3>
         <ul style={styles.infoList}>
           <li style={styles.infoItem}>
-            <FaEnvelope style={styles.icon} /> 
+            <FaEnvelope style={styles.icon} />
             <a href="mailto:placementhub9@gmail.com" style={styles.link}>
               placementhub9@gmail.com
             </a>
           </li>
           <li style={styles.infoItem}>
-            <FaLinkedin style={styles.icon} /> 
-            <a href="https://www.linkedin.com/company/108454811/admin/page-posts/published/" style={styles.link}>LinkedIn</a>
+            <FaLinkedin style={styles.icon} />
+            <a
+              href="https://www.linkedin.com/company/108454811/admin/page-posts/published/"
+              style={styles.link}
+            >
+              LinkedIn
+            </a>
             <span style={{ margin: "0 5px" }}>|</span>
-            <FaInstagram style={styles.icon} /> 
-            <a href="https://www.instagram.com/vy_software/?next=%2F&hl=en" style={styles.link}>Instagram</a>
+            <FaInstagram style={styles.icon} />
+            <a href="https://www.instagram.com/vy_software/?next=%2F&hl=en" style={styles.link}>
+              Instagram
+            </a>
           </li>
           <li style={styles.infoItem}>
-            <FaMapMarkerAlt style={styles.icon} /> 
-            <a href="https://www.google.com/maps/place/Bareilly,+Uttar+Pradesh/" style={styles.link}>
+            <FaMapMarkerAlt style={styles.icon} />
+            <a
+              href="https://www.google.com/maps/place/Bareilly,+Uttar+Pradesh/"
+              style={styles.link}
+            >
               Find our location
             </a>
           </li>
           <li style={styles.infoItem}>
-            <FaProjectDiagram style={styles.icon} /> 
+            <FaProjectDiagram style={styles.icon} />
             <Link to="/" state={{ scrollTo: "projects" }} style={styles.link}>
               Check our latest projects
             </Link>
           </li>
           <li style={styles.infoItem}>
-            <FaUsers style={styles.icon} /> 
+            <FaUsers style={styles.icon} />
             <Link to="/" state={{ scrollTo: "leadership" }} style={styles.link}>
               Know more about our team
             </Link>
@@ -134,7 +177,6 @@ const styles = {
     outline: "none",
     transition: "border 0.2s ease, box-shadow 0.2s ease",
   },
-  
   checkboxContainer: {
     display: "flex",
     alignItems: "center",
@@ -197,4 +239,4 @@ const styles = {
   },
 };
 
-export default ContactPage;
+export default Contactpage;
