@@ -86,8 +86,8 @@ function Contactpage() {
         <ul style={styles.infoList}>
           <li style={styles.infoItem}>
             <FaEnvelope style={styles.icon} />
-            <a href="mailto:placementhub9@gmail.com" style={styles.link}>
-              placementhub9@gmail.com
+            <a href="mailto:vysoftwarecompany@gmail.com,placementhub9@gmail.com" style={styles.link}>
+              vysoftwarecompany@gmail.com
             </a>
           </li>
           <li style={styles.infoItem}>
