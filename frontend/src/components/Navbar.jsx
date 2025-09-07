@@ -21,6 +21,10 @@ function Navbar() {
         <li><a href="#about" onClick={() => setIsOpen(false)}>About</a></li>
         <li><a href="#projects" onClick={() => setIsOpen(false)}>Projects</a></li>
         <li><a href="#leadership" onClick={() => setIsOpen(false)}>Leadership</a></li>
+        <li><a href="#" onClick={() => setIsOpen(false)}>Services</a></li>
+        <li><a href="#" onClick={() => setIsOpen(false)}>Upcomming</a></li>
+        <li><a href="#" onClick={() => setIsOpen(false)}>Career</a></li>
+        <li><a href="#" onClick={() => setIsOpen(false)}>Support</a></li>
       </ul>
     </nav>
   );

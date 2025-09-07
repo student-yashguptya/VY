@@ -2,6 +2,7 @@ import React from 'react';
 import '../App.css';
 import teamWorking from '../assets/team-working.png';
 import planning from '../assets/planning.png';
+import { Link } from 'react-router-dom';
 
 export default function About() {
   return (
@@ -80,12 +81,14 @@ export default function About() {
         <div className="process-box">
           {/* Left - Image and Intro */}
           <div className="process-image-col">
-            <img src={planning} alt="planning" className="process-photo" />
-            <p className="process-desc">
-             As a software and service company, VY follows a comprehensive, value-driven methodology across every engagement—ensuring that each solution is smooth, strategic, and successful from discovery through launch
-            </p>
-            <button className="process-cta-btn">Start your work</button>
-          </div>
+  <img src={planning} alt="planning" className="process-photo" />
+  <p className="process-desc">
+   As a software and service company, VY follows a comprehensive, value-driven methodology across every engagement—ensuring that each solution is smooth, strategic, and successful from discovery through launch
+  </p>
+  <Link to="/contact">
+    <button className="process-cta-btn">Request a Demo</button>
+  </Link>
+</div>
 
           {/* Right - Steps */}
           <div className="process-steps-col">

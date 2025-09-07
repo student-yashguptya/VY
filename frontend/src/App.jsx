@@ -56,17 +56,7 @@ function HomePage() {
       description="A robust ERP system designed to automate campus recruitment and corporate hiring processes." 
       icon="🎓"
     />
-    <ProjectCard 
-      title="BookMyRoom App & Website" 
-      description="A modern booking system for hotels, hostels, and shared accommodations." 
-      icon="🏨"
-    />
-    {/* Example extra project if you expand later */}
-    {/* <ProjectCard 
-      title="E-Commerce Store Builder" 
-      description="Create your own online store with customizable templates and secure payment options." 
-      icon="🛒"
-    /> */}
+    
   </div>
 </section>
 
