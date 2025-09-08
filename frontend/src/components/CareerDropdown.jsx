@@ -16,6 +16,7 @@ const jobs = [
       "Optimize performance",
     ],
     requirements: ["React.js experience", "Good CSS/JS skills", "Team player"],
+    applyLink: "https://forms.gle/9zsia1jBH9joduMu7",
   },
   {
     id: 2,
@@ -25,6 +26,7 @@ const jobs = [
     image: job2,
     responsibilities: ["Design mockups", "Work with dev team", "User testing"],
     requirements: ["Figma knowledge", "Creative mindset", "Portfolio"],
+    applyLink: "https://forms.gle/9zsia1jBH9joduMu7",
   },
   {
     id: 3,
@@ -34,6 +36,7 @@ const jobs = [
     image: job2,
     responsibilities: ["Design mockups", "Work with dev team", "User testing"],
     requirements: ["Figma knowledge", "Creative mindset", "Portfolio"],
+    applyLink: "https://forms.gle/9zsia1jBH9joduMu7",
   },
   {
     id: 4,
@@ -43,6 +46,7 @@ const jobs = [
     image: job2,
     responsibilities: ["Design mockups", "Work with dev team", "User testing"],
     requirements: ["Figma knowledge", "Creative mindset", "Portfolio"],
+    applyLink: "https://forms.gle/9zsia1jBH9joduMu7",
   },
 ];
 
@@ -74,7 +78,7 @@ function CareerDropdown({ isOpen, onClose }) {
         className={`career-dropdown ${isOpen ? "open" : ""}`}
         onClick={onClose} // clicking anywhere closes
       >
-        <div className="career-content">
+        <div className="career-content" onClick={(e) => e.stopPropagation()}>
           {/* Left Section */}
           <div className="career-left">
             <h2>💼 Join Our Team</h2>
@@ -127,20 +131,18 @@ function CareerDropdown({ isOpen, onClose }) {
                       <li key={i}>{req}</li>
                     ))}
                   </ul>
+
+                  {/* Apply Button inside each card */}
+                  <a
+                    href={job.applyLink}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="apply-btn"
+                  >
+                    Apply Now
+                  </a>
                 </div>
               ))}
-            </div>
-
-            {/* One Apply Button */}
-            <div className="apply-wrapper">
-              <a
-                href="https://forms.gle/9zsia1jBH9joduMu7"
-                target="_blank"
-                rel="noreferrer"
-                className="apply-btn"
-              >
-                Apply Now
-              </a>
             </div>
           </div>
         </div>
