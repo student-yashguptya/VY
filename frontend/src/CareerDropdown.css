@@ -20,12 +20,12 @@
 
 /* Dropdown */
 .career-dropdown {
-  position: absolute; /* fixed instead of absolute */
-  top: 90px; /* adjust to match your navbar height */
+  position: fixed; /* ✅ stays attached to viewport */
+  top: 90px;       /* adjust based on your navbar height */
   left: 0;
   width: 100%;
   height: auto;
-  max-height: calc(100vh - 90px); /* ensures it never goes off screen */
+  max-height: calc(100vh - 90px); /* fits screen size */
   background: #111827;
   color: white;
   padding: 40px 30px;
@@ -38,8 +38,9 @@
   pointer-events: none;
   transition: all 0.35s ease-in-out;
 
-  overflow-y: auto; /* allow scrolling inside dropdown if too many jobs */
+  overflow-y: auto; /* scroll inside dropdown if needed */
 }
+
 .career-dropdown.open {
   opacity: 1;
   transform: translateY(0);
