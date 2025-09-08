@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
-import "../App.css";
+import "../Service.css";
+
 
 function ServicesDropdown({ isOpen, onClose }) {
   const dropdownRef = useRef(null);

@@ -1,0 +1,130 @@
+.mega-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 2rem;
+}
+
+.mega-left {
+  flex: 1;
+  min-width: 45%;
+}
+
+.mega-right {
+  flex: 1;
+  min-width: 45%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+/* Carousel container */
+.carousel-content {
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+/* Project Card */
+.project-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  width: 100%;
+  min-height: 420px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  text-align: left;
+  transition: transform 0.4s ease, opacity 0.4s ease;
+}
+
+/* Image responsive */
+.project-image {
+  max-width: 100%;
+  max-height: 40vh;
+  object-fit: contain;
+  margin-bottom: 12px;
+  border-radius: 8px;
+}
+
+/* Headings */
+.features-title,
+.benefits-title {
+  margin-top: 15px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #0056b3;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 4px;
+}
+
+/* Lists */
+.project-card ul {
+  margin: 8px 0 12px 18px;
+  padding: 0;
+  list-style-type: disc;
+  color: #333;
+}
+
+.project-card ul li {
+  font-size: 0.95rem;
+  margin-bottom: 6px;
+  line-height: 1.4;
+}
+
+/* Navigation Arrows */
+.nav-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #fff;
+  border: none;
+  color: #374151;
+  font-size: 2rem;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  transition: all 0.2s ease-in-out;
+}
+
+.nav-arrow.left { left: 10px; }
+.nav-arrow.right { right: 10px; }
+
+.nav-arrow:hover {
+  background: #f3f4f6;
+  transform: translateY(-50%) scale(1.1);
+}
+
+/* Extra Info Styling */
+.extra-info {
+  margin-top: 15px;
+}
+
+.extra-info h4 {
+  margin: 10px 0 5px;
+  color: #ffd700;
+}
+
+.extra-info ul {
+  margin-left: 18px;
+  color: #ccc;
+  font-size: 0.95rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .mega-content {
+    flex-direction: column;
+    text-align: center;
+  }
+  .nav-arrow.left { left: -35px; }
+  .nav-arrow.right { right: -35px; }
+  .project-card { max-width: 90%; margin: 0 auto; }
+}

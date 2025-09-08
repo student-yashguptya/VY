@@ -2,16 +2,17 @@ import React, { useState, useEffect } from "react";
 import "../App.css";
 import logo from "../assets/image.jpg";
 import ServicesDropdown from "./ServicesDropdown";
-
+import UpcomingDropdown from "./UpcomingDropdown";
+import CareerDropdown from "./CareerDropdown"; // import new dropdown
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-  const [isMegaOpen, setIsMegaOpen] = useState(false);
+  const [isMegaOpen, setIsMegaOpen] = useState(null); // "services" | "upcoming" | "career"
 
   // Close dropdown on scroll
   useEffect(() => {
     function handleScroll() {
-      if (isMegaOpen) setIsMegaOpen(false);
+      if (isMegaOpen) setIsMegaOpen(null);
     }
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
@@ -42,22 +43,56 @@ function Navbar() {
               className="mega-link"
               onClick={(e) => {
                 e.preventDefault();
-                setIsMegaOpen(!isMegaOpen);
+                setIsMegaOpen(isMegaOpen === "services" ? null : "services");
               }}
             >
               Services
             </a>
           </li>
 
-         <li><a href="#upcoming" onClick={() => setIsOpen(false)}>Upcoming</a></li>
-          <li><a href="#career" onClick={() => setIsOpen(false)}>Career</a></li>
+          {/* Upcoming Mega Dropdown */}
+          <li>
+            <a
+              href="#upcoming"
+              className="mega-link"
+              onClick={(e) => {
+                e.preventDefault();
+                setIsMegaOpen(isMegaOpen === "upcoming" ? null : "upcoming");
+              }}
+            >
+              Upcoming
+            </a>
+          </li>
+
+         <li>
+          <a
+          href="#career"
+    className="mega-link"
+    onClick={(e) => {
+      e.preventDefault();
+      console.log("Career clicked!"); // ✅ debug
+      setIsMegaOpen(isMegaOpen === "career" ? null : "career");
+    }}
+  >
+    Career
+  </a>
+</li>
+
           <li><a href="#support" onClick={() => setIsOpen(false)}>Support</a></li>
         </ul>
       </nav>
 
-      {/* Render ServicesDropdown */}
-      {isMegaOpen && (
-        <ServicesDropdown isOpen={isMegaOpen} onClose={() => setIsMegaOpen(false)} />
+      {/* Render Dropdowns */}
+      {isMegaOpen === "services" && (
+        <ServicesDropdown isOpen={true} onClose={() => setIsMegaOpen(null)} />
+      )}
+
+      {isMegaOpen === "upcoming" && (
+        <UpcomingDropdown isOpen={true} onClose={() => setIsMegaOpen(null)} />
+      )}
+
+      {isMegaOpen === "career" && (
+        <CareerDropdown isOpen={true} onClose={() => setIsMegaOpen(null)} />
       )}
     </>
   );
