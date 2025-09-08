@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "../App.css";
 import logo from "../assets/image.jpg";
 import ServicesDropdown from "./ServicesDropdown";
-import UpcomingDropdown from "./UpcomingDropdown";
+import UpcomingDropdown from "./Upcomingdropdown";
 import CareerDropdown from "./CareerDropdown"; // import new dropdown
 
 function Navbar() {
