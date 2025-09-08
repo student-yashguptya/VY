@@ -1,10 +1,11 @@
 import React, { useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom"; // <-- Import useNavigate
 import "../Service.css";
-
 
 function ServicesDropdown({ isOpen, onClose }) {
   const dropdownRef = useRef(null);
   const [visible, setVisible] = useState(isOpen);
+  const navigate = useNavigate(); // <-- Initialize navigate
 
   // Handle mount/unmount animation
   useEffect(() => {
@@ -27,7 +28,7 @@ function ServicesDropdown({ isOpen, onClose }) {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [onClose]);
 
-  // ✅ Close on scroll
+  // Close on scroll
   useEffect(() => {
     if (!isOpen) return;
     function handleScroll() {
@@ -60,68 +61,22 @@ function ServicesDropdown({ isOpen, onClose }) {
               Discover our wide range of solutions designed to help your
               business grow, transform, and succeed in the digital era.
             </p>
-            <button className="explore-btn" onClick={onClose}>
+            <button
+              className="explore-btn"
+              onClick={() => {
+                onClose(); // close dropdown
+                navigate("/explore"); // navigate to ExplorePage
+              }}
+            >
               Explore
             </button>
           </div>
 
           {/* Middle Section */}
-          <div className="mega-links">
-            {/* <ul>
-              <li>
-                <a href="#web" onClick={onClose}>
-                  Web Development →
-                </a>
-              </li>
-              <li>
-                <a href="#app" onClick={onClose}>
-                  App Development →
-                </a>
-              </li>
-              <li>
-                <a href="#cloud" onClick={onClose}>
-                  Cloud Solutions →
-                </a>
-              </li>
-              <li>
-                <a href="#ai" onClick={onClose}>
-                  AI & Automation →
-                </a>
-              </li>
-              <li>
-                <a href="#consulting" onClick={onClose}>
-                  Consulting →
-                </a>
-              </li>
-            </ul> */}
-          </div>
+          <div className="mega-links"></div>
 
           {/* Right Section */}
-          <div className="mega-right">
-            {/* <h3>Spotlight</h3>
-            <ul>
-              <li>
-                <a href="#enterprise" onClick={onClose}>
-                  Enterprise Solutions
-                </a>
-              </li>
-              <li>
-                <a href="#startup" onClick={onClose}>
-                  Startup Programs
-                </a>
-              </li>
-              <li>
-                <a href="#innovation" onClick={onClose}>
-                  Innovation Labs
-                </a>
-              </li>
-              <li>
-                <a href="#global" onClick={onClose}>
-                  Global Delivery Services
-                </a>
-              </li>
-            </ul> */}
-          </div>
+          <div className="mega-right"></div>
         </div>
       </div>
     </>
