@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "../App.css";
-import logo from "../assets/image.jpg";
+import logo from "../assets/image.png";
 import ServicesDropdown from "./ServicesDropdown";
 import UpcomingDropdown from "./Upcomingdropdown";
 import CareerDropdown from "./CareerDropdown"; // import new dropdown
