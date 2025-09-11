@@ -3,52 +3,7 @@ import "../CareerDropdown.css";
 import job1 from "../assets/career1.png";
 import job2 from "../assets/career1.png";
 
-const jobs = [
-  {
-    id: 1,
-    title: "Frontend Developer",
-    type: "Full-time",
-    location: "Bangalore, India",
-    image: job1,
-    responsibilities: [
-      "Build UI components",
-      "Collaborate with designers",
-      "Optimize performance",
-    ],
-    requirements: ["React.js experience", "Good CSS/JS skills", "Team player"],
-    applyLink: "https://forms.gle/9zsia1jBH9joduMu7",
-  },
-  {
-    id: 2,
-    title: "UI/UX Designer Intern",
-    type: "Intern",
-    location: "Remote",
-    image: job2,
-    responsibilities: ["Design mockups", "Work with dev team", "User testing"],
-    requirements: ["Figma knowledge", "Creative mindset", "Portfolio"],
-    applyLink: "https://forms.gle/9zsia1jBH9joduMu7",
-  },
-  {
-    id: 3,
-    title: "UI/UX Designer Intern",
-    type: "Intern",
-    location: "On-site",
-    image: job2,
-    responsibilities: ["Design mockups", "Work with dev team", "User testing"],
-    requirements: ["Figma knowledge", "Creative mindset", "Portfolio"],
-    applyLink: "https://forms.gle/9zsia1jBH9joduMu7",
-  },
-  {
-    id: 4,
-    title: "UI/UX Designer Intern",
-    type: "Remote",
-    location: "Mumbai, India",
-    image: job2,
-    responsibilities: ["Design mockups", "Work with dev team", "User testing"],
-    requirements: ["Figma knowledge", "Creative mindset", "Portfolio"],
-    applyLink: "https://forms.gle/9zsia1jBH9joduMu7",
-  },
-];
+const jobs = [];
 
 function CareerDropdown({ isOpen, onClose }) {
   const [filter, setFilter] = useState("All");

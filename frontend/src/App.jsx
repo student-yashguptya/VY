@@ -10,6 +10,7 @@ import Contactpage from "./components/ContactForm";
 
 import vishalImg from "./assets/vishal.jpg";
 import yashImg from "./assets/yash.jpg";
+import pankhiImg from "./assets/pankhi.jpg";
 import About from "./pages/About";
 import ExplorePage from "./components/ExplorePage.jsx";   // ✅ import here
 
@@ -64,17 +65,26 @@ function HomePage() {
         <div className="leadership-grid">
           <LeadershipCard 
             name="Vishal Sharma" 
-            role="CEO & Founder" 
-            phone="6398692585" 
-            email="placementhub9@gmail.com" 
+            role="CEO & Founder"  
+            email="vysoftwarecompany@gmail.com" 
             image={vishalImg} 
           />
           <LeadershipCard 
             name="Yash Gupta" 
             role="CEO & Founder" 
-            phone="9520102418" 
-            email="placementhub9@gmail.com" 
+            email="vysoftwarecompany@gmail.com" 
             image={yashImg} 
+          />
+        </div>
+      </section>
+
+      <section id="leadership" className="leadership">
+        <h2>Our Team</h2>
+        <div className="leadership-grid">
+          <LeadershipCard 
+            name="Pankhi Gupta" 
+            role="Backend Developer" 
+            image={pankhiImg} 
           />
         </div>
       </section>

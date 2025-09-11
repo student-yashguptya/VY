@@ -6,9 +6,9 @@ function LeadershipCard({ name, role, phone, email, image }) {
       <img src={image} alt={name} className="leader-img" />
       <h3>{name}</h3>
       <p><strong>{role}</strong></p>
-      <p>📞 {phone}</p>
-      <p>✉️ {email}</p>
+      <p>{email}</p>
     </div>
+    
   );
 }
 

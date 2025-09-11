@@ -77,9 +77,7 @@ function Navbar() {
     Career
   </a>
 </li>
-
-          <li><a href="#support" onClick={() => setIsOpen(false)}>Support</a></li>
-        </ul>
+  </ul>
       </nav>
 
       {/* Render Dropdowns */}
