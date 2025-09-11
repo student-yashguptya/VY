@@ -64,14 +64,14 @@ function HomePage() {
         <div className="leadership-grid">
           <LeadershipCard 
             name="Vishal Sharma" 
-            role="CEO & Co-founder" 
+            role="CEO & Founder" 
             phone="6398692585" 
             email="placementhub9@gmail.com" 
             image={vishalImg} 
           />
           <LeadershipCard 
             name="Yash Gupta" 
-            role="CEO & Co-founder" 
+            role="CEO & Founder" 
             phone="9520102418" 
             email="placementhub9@gmail.com" 
             image={yashImg} 
