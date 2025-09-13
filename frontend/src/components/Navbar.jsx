@@ -1,15 +1,17 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "../App.css";
 import logo from "../assets/image.png";
 import ServicesDropdown from "./ServicesDropdown";
 import UpcomingDropdown from "./Upcomingdropdown";
-import CareerDropdown from "./CareerDropdown"; // import new dropdown
+import CareerDropdown from "./CareerDropdown";
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isMegaOpen, setIsMegaOpen] = useState(null); // "services" | "upcoming" | "career"
 
-  // Close dropdown on scroll
+  const navRef = useRef(null);
+
+  // Close mega dropdown on scroll
   useEffect(() => {
     function handleScroll() {
       if (isMegaOpen) setIsMegaOpen(null);
@@ -18,25 +20,58 @@ function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [isMegaOpen]);
 
+  // Close hamburger or mega dropdown when clicking outside
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (navRef.current && !navRef.current.contains(event.target)) {
+        setIsOpen(false);
+        setIsMegaOpen(null);
+      }
+    }
+    document.addEventListener("click", handleClickOutside);
+    return () => document.removeEventListener("click", handleClickOutside);
+  }, []);
+
+  // Close hamburger when navigating to a section
+  const handleNavLinkClick = () => {
+    setIsOpen(false);
+    setIsMegaOpen(null);
+  };
+
   return (
     <>
-      <nav className="navbar">
+      <nav className="navbar" ref={navRef}>
         <img src={logo} alt="VY Logo" className="logo" />
 
         <button
           className="hamburger"
-          onClick={() => setIsOpen(!isOpen)}
+          onClick={(e) => {
+            e.stopPropagation(); // prevent document click
+            setIsOpen(!isOpen);
+          }}
           aria-label="Toggle Menu"
         >
           ☰
         </button>
 
         <ul className={`nav-links ${isOpen ? "open" : ""}`}>
-          <li><a href="#about" onClick={() => setIsOpen(false)}>About</a></li>
-          <li><a href="#projects" onClick={() => setIsOpen(false)}>Projects</a></li>
-          <li><a href="#leadership" onClick={() => setIsOpen(false)}>Leadership</a></li>
+          <li>
+            <a href="#about" onClick={handleNavLinkClick}>
+              About
+            </a>
+          </li>
+          <li>
+            <a href="#projects" onClick={handleNavLinkClick}>
+              Projects
+            </a>
+          </li>
+          <li>
+            <a href="#leadership" onClick={handleNavLinkClick}>
+              Leadership
+            </a>
+          </li>
 
-          {/* Services Mega Dropdown */}
+          {/* Mega Dropdowns */}
           <li>
             <a
               href="#services"
@@ -49,8 +84,6 @@ function Navbar() {
               Services
             </a>
           </li>
-
-          {/* Upcoming Mega Dropdown */}
           <li>
             <a
               href="#upcoming"
@@ -63,32 +96,28 @@ function Navbar() {
               Upcoming
             </a>
           </li>
-
-         <li>
-          <a
-          href="#career"
-    className="mega-link"
-    onClick={(e) => {
-      e.preventDefault();
-      console.log("Career clicked!"); // ✅ debug
-      setIsMegaOpen(isMegaOpen === "career" ? null : "career");
-    }}
-  >
-    Career
-  </a>
-</li>
-  </ul>
+          <li>
+            <a
+              href="#career"
+              className="mega-link"
+              onClick={(e) => {
+                e.preventDefault();
+                setIsMegaOpen(isMegaOpen === "career" ? null : "career");
+              }}
+            >
+              Career
+            </a>
+          </li>
+        </ul>
       </nav>
 
-      {/* Render Dropdowns */}
+      {/* Render Mega Dropdowns */}
       {isMegaOpen === "services" && (
         <ServicesDropdown isOpen={true} onClose={() => setIsMegaOpen(null)} />
       )}
-
       {isMegaOpen === "upcoming" && (
         <UpcomingDropdown isOpen={true} onClose={() => setIsMegaOpen(null)} />
       )}
-
       {isMegaOpen === "career" && (
         <CareerDropdown isOpen={true} onClose={() => setIsMegaOpen(null)} />
       )}

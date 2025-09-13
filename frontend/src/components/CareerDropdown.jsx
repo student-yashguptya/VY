@@ -3,7 +3,28 @@ import "../CareerDropdown.css";
 import job1 from "../assets/career1.png";
 import job2 from "../assets/career1.png";
 
-const jobs = [];
+const jobs = [
+  // {
+  //   id: 1,
+  //   title: "Frontend Developer",
+  //   type: "Full-time",
+  //   location: "Remote",
+  //   image: job1,
+  //   responsibilities: ["Build UI components", "Collaborate with designers"],
+  //   requirements: ["React.js", "CSS", "Team player"],
+  //   applyLink: "#",
+  // },
+  // {
+  //   id: 2,
+  //   title: "UI/UX Intern",
+  //   type: "Intern",
+  //   location: "Onsite",
+  //   image: job2,
+  //   responsibilities: ["Design wireframes", "User research"],
+  //   requirements: ["Figma", "Creativity"],
+  //   applyLink: "#",
+  // },
+];
 
 function CareerDropdown({ isOpen, onClose }) {
   const [filter, setFilter] = useState("All");
@@ -11,7 +32,7 @@ function CareerDropdown({ isOpen, onClose }) {
   const filteredJobs =
     filter === "All" ? jobs : jobs.filter((job) => job.type === filter);
 
-  // Close on ESC key
+  // ✅ Close on ESC key
   useEffect(() => {
     const handleEsc = (e) => {
       if (e.key === "Escape") onClose();
@@ -27,15 +48,14 @@ function CareerDropdown({ isOpen, onClose }) {
   if (!isOpen) return null;
 
   return (
-    <>
-      {/* Backdrop + Dropdown */}
+    <div className="career-backdrop open" onClick={onClose}>
       <div
         className={`career-dropdown ${isOpen ? "open" : ""}`}
-        onClick={onClose} // clicking anywhere closes
+        // ⚡ no stopPropagation here → clicks on blank dropdown area will close
       >
-        <div className="career-content" onClick={(e) => e.stopPropagation()}>
+        <div className="career-content">
           {/* Left Section */}
-          <div className="career-left">
+          <div className="career-left" onClick={onClose}>
             <h2>💼 Join Our Team</h2>
             <p>
               We’re always looking for passionate people to grow with us.
@@ -45,8 +65,8 @@ function CareerDropdown({ isOpen, onClose }) {
 
           {/* Right Section */}
           <div className="career-right">
-            {/* Filter Bar */}
-            <div className="filter-bar">
+            {/* Filter Bar (don’t close) */}
+            <div className="filter-bar" onClick={(e) => e.stopPropagation()}>
               <label htmlFor="jobFilter">Filter by:</label>
               <select
                 id="jobFilter"
@@ -60,10 +80,14 @@ function CareerDropdown({ isOpen, onClose }) {
               </select>
             </div>
 
-            {/* Job Grid */}
-            <div className="career-grid">
-              {filteredJobs.map((job) => (
-                <div className="career-card" key={job.id}>
+            {/* Job Grid (don’t close on cards) */}
+            <div className="career-grid" onClick={(e) => e.stopPropagation()}>
+              {filteredJobs.map((job, index) => (
+                <div
+                  className="career-card fade-slide"
+                  key={job.id}
+                  style={{ animationDelay: `${index * 0.15}s` }}
+                >
                   <img src={job.image} alt={job.title} className="career-img" />
                   <h3>{job.title}</h3>
                   <p>
@@ -87,12 +111,12 @@ function CareerDropdown({ isOpen, onClose }) {
                     ))}
                   </ul>
 
-                  {/* Apply Button inside each card */}
                   <a
                     href={job.applyLink}
                     target="_blank"
                     rel="noreferrer"
                     className="apply-btn"
+                    onClick={(e) => e.stopPropagation()} // don’t close
                   >
                     Apply Now
                   </a>
@@ -102,7 +126,7 @@ function CareerDropdown({ isOpen, onClose }) {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 

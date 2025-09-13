@@ -1,42 +1,53 @@
 .hero-container {
   position: relative;
   width: 100%;
-  height: 100vh; /* Full screen height */
+  height: 100vh; /* lock height */
   overflow: hidden;
 }
 
 .hero-video {
   position: absolute;
   top: 0;
-  left: 0;
-  width: 100%;
-  height: 88%;
-  object-fit: cover; /* Fill the container */
+  left: 50%;
+  height: 100%;        /* ✅ fixed height */
+  width: auto;         /* ✅ width adjusts proportionally */
+  min-width: 100%;     /* ✅ ensure it fills horizontally */
+  transform: translateX(-50%); /* ✅ keep video centered */
+  object-fit: cover;   /* crop edges if needed */
   z-index: 1;
 }
+
 
 .hero-overlay {
   position: relative;
   z-index: 2;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   text-align: center;
-  padding: 0 20px; /* Prevent text from touching edges on small screens */
   color: white;
+  padding: 0 20px;
 }
 
-/* Desktop styles */
+
 .hero-overlay h1 {
-  font-size: 3.5rem;
-  font-weight: bold;
-  color: #00bcd4;
-  margin-bottom: 15px;
+  font-size: 3rem;
+  margin-bottom: 20px;
 }
 
 .hero-overlay p {
   font-size: 1.2rem;
-  font-weight: 300;
+  margin-bottom: 30px;
+}
+
+.hero-overlay .btn {
+  padding: 10px 20px;
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.hero-overlay .btn:hover {
+  background-color: #0056b3;
 }
 
 /* ✅ Mobile responsiveness */
