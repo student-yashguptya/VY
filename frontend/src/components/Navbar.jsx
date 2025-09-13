@@ -72,42 +72,45 @@ function Navbar() {
           </li>
 
           {/* Mega Dropdowns */}
-          <li>
-            <a
-              href="#services"
-              className="mega-link"
-              onClick={(e) => {
-                e.preventDefault();
-                setIsMegaOpen(isMegaOpen === "services" ? null : "services");
-              }}
-            >
-              Services
-            </a>
-          </li>
-          <li>
-            <a
-              href="#upcoming"
-              className="mega-link"
-              onClick={(e) => {
-                e.preventDefault();
-                setIsMegaOpen(isMegaOpen === "upcoming" ? null : "upcoming");
-              }}
-            >
-              Upcoming
-            </a>
-          </li>
-          <li>
-            <a
-              href="#career"
-              className="mega-link"
-              onClick={(e) => {
-                e.preventDefault();
-                setIsMegaOpen(isMegaOpen === "career" ? null : "career");
-              }}
-            >
-              Career
-            </a>
-          </li>
+         <li>
+  <a
+    href="#services"
+    className="mega-link"
+    onClick={(e) => {
+      e.preventDefault();
+      setIsMegaOpen(isMegaOpen === "services" ? null : "services");
+      setIsOpen(false); // ✅ close hamburger
+    }}
+  >
+    Services
+  </a>
+</li>
+<li>
+  <a
+    href="#upcoming"
+    className="mega-link"
+    onClick={(e) => {
+      e.preventDefault();
+      setIsMegaOpen(isMegaOpen === "upcoming" ? null : "upcoming");
+      setIsOpen(false); // ✅ close hamburger
+    }}
+  >
+    Upcoming
+  </a>
+</li>
+<li>
+  <a
+    href="#career"
+    className="mega-link"
+    onClick={(e) => {
+      e.preventDefault();
+      setIsMegaOpen(isMegaOpen === "career" ? null : "career");
+      setIsOpen(false); // ✅ close hamburger
+    }}
+  >
+    Career
+  </a>
+</li>
         </ul>
       </nav>
 
