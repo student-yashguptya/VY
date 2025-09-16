@@ -32,7 +32,7 @@ function Navbar() {
     return () => document.removeEventListener("click", handleClickOutside);
   }, []);
 
-  // Close hamburger when navigating to a section
+  // Close hamburger when navigating to normal section
   const handleNavLinkClick = () => {
     setIsOpen(false);
     setIsMegaOpen(null);
@@ -43,10 +43,11 @@ function Navbar() {
       <nav className="navbar" ref={navRef}>
         <img src={logo} alt="VY Logo" className="logo" />
 
+        {/* Hamburger Button */}
         <button
           className="hamburger"
           onClick={(e) => {
-            e.stopPropagation(); // prevent document click
+            e.stopPropagation(); // prevent closing immediately
             setIsOpen(!isOpen);
           }}
           aria-label="Toggle Menu"
@@ -54,6 +55,7 @@ function Navbar() {
           ☰
         </button>
 
+        {/* Nav Links */}
         <ul className={`nav-links ${isOpen ? "open" : ""}`}>
           <li>
             <a href="#about" onClick={handleNavLinkClick}>
@@ -71,52 +73,58 @@ function Navbar() {
             </a>
           </li>
 
-          {/* Mega Dropdowns */}
-         <li>
-  <a
-    href="#services"
-    className="mega-link"
-    onClick={(e) => {
-      e.preventDefault();
-      setIsMegaOpen(isMegaOpen === "services" ? null : "services");
-      setIsOpen(false); // ✅ close hamburger
-    }}
-  >
-    Services
-  </a>
-</li>
-<li>
-  <a
-    href="#upcoming"
-    className="mega-link"
-    onClick={(e) => {
-      e.preventDefault();
-      setIsMegaOpen(isMegaOpen === "upcoming" ? null : "upcoming");
-      setIsOpen(false); // ✅ close hamburger
-    }}
-  >
-    Upcoming
-  </a>
-</li>
-<li>
-  <a
-    href="#career"
-    className="mega-link"
-    onClick={(e) => {
-      e.preventDefault();
-      setIsMegaOpen(isMegaOpen === "career" ? null : "career");
-      setIsOpen(false); // ✅ close hamburger
-    }}
-  >
-    Career
-  </a>
-</li>
+          {/* Mega Dropdown Triggers */}
+          <li>
+            <a
+              href="#services"
+              className="mega-link"
+              onClick={(e) => {
+                e.preventDefault();
+                setIsMegaOpen(isMegaOpen === "services" ? null : "services");
+                setIsOpen(false); // ✅ close hamburger when dropdown opens
+              }}
+            >
+              Services
+            </a>
+          </li>
+
+          <li>
+            <a
+              href="#upcoming"
+              className="mega-link"
+              onClick={(e) => {
+                e.preventDefault();
+                setIsMegaOpen(isMegaOpen === "upcoming" ? null : "upcoming");
+                setIsOpen(false); // ✅ close hamburger
+              }}
+            >
+              Upcoming
+            </a>
+          </li>
+
+          <li>
+            <a
+              href="#career"
+              className="mega-link"
+              onClick={(e) => {
+                e.preventDefault();
+                setIsMegaOpen(isMegaOpen === "career" ? null : "career");
+                setIsOpen(false); // ✅ close hamburger
+              }}
+            >
+              Career
+            </a>
+          </li>
         </ul>
       </nav>
 
-      {/* Render Mega Dropdowns */}
+      {/* Mega Dropdowns */}
       {isMegaOpen === "services" && (
-        <ServicesDropdown isOpen={true} onClose={() => setIsMegaOpen(null)} />
+  <ServicesDropdown
+    isOpen={true}
+    onClose={() => setIsMegaOpen(null)}
+    containerRef={navRef}   // ✅ pass navbar ref
+  />
       )}
       {isMegaOpen === "upcoming" && (
         <UpcomingDropdown isOpen={true} onClose={() => setIsMegaOpen(null)} />

@@ -16,7 +16,7 @@ body {
 .navbar {
   position: sticky;
   top: 0;
-  z-index: 1000;
+  z-index: 1200; /* higher than dropdown */
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -32,23 +32,7 @@ body {
   text-decoration: none;
 }
 
-.navbar-menu {
-  display: flex;
-  gap: 30px;
-}
-
-.navbar-menu a {
-  text-decoration: none;
-  color: #333;
-  font-weight: 500;
-  transition: color 0.3s ease;
-}
-
-.navbar-menu a:hover {
-  color: #007BFF;
-}
-
-/* Gentle floating animation */
+/* Floating logo animation */
 @keyframes flyingLogo {
   0% { transform: translateY(0); }
   50% { transform: translateY(-10px); }
@@ -61,7 +45,7 @@ body {
   animation: flyingLogo 3s ease-in-out infinite;
 }
 
-
+/* Nav links desktop */
 .nav-links {
   list-style: none;
   display: flex;
@@ -80,7 +64,7 @@ body {
   color: #ffd700;
 }
 
-/* Hamburger button */
+/* Hamburger */
 .hamburger {
   display: none;
   font-size: 28px;
@@ -88,6 +72,7 @@ body {
   border: none;
   color: white;
   cursor: pointer;
+  z-index: 1300; /* ensures above dropdown */
 }
 
 @media (max-width: 768px) {
@@ -105,10 +90,23 @@ body {
     padding: 20px;
     border-radius: 8px;
     display: none;
+    z-index: 1250; /* higher than dropdown */
   }
 
   .nav-links.open {
     display: flex;
+  }
+
+  /* Animate items */
+  .nav-links li {
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+  }
+
+  .nav-links.open li {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
@@ -135,7 +133,7 @@ body {
 
 .mega-dropdown {
   position: fixed;
-  top: 90px; /* height of navbar */
+  top: 90px;
   left: 0;
   width: 100%;
   background: #111827;
@@ -143,15 +141,13 @@ body {
   padding: 40px;
   display: flex;
   justify-content: center;
-  z-index: 1000;
+  z-index: 1000; /* lower than navbar/hamburger */
   opacity: 0;
   transform: translateY(-20px);
   pointer-events: none;
   transition: all 0.3s ease-in-out;
-
-  /* Scroll handling */
-  max-height: calc(100vh - 90px); /* fit within viewport */
-  overflow-y: auto; /* scrollbar on dropdown itself */
+  max-height: calc(100vh - 90px);
+  overflow-y: auto;
 }
 
 .mega-dropdown.open {
@@ -166,54 +162,9 @@ body {
   gap: 40px;
   max-width: 1200px;
   width: 100%;
-
-  /* prevent inner scrollbar */
   overflow: visible;
-  padding-right: 10px; /* space so content doesn’t clash with scrollbar */
+  padding-right: 10px;
 }
-
-
-
-.mega-left h2 {
-  margin-bottom: 10px;
-}
-
-.mega-left p {
-  margin-bottom: 20px;
-}
-
-.explore-btn {
-  background: #facc15;
-  border: none;
-  padding: 10px 20px;
-  cursor: pointer;
-  font-weight: bold;
-}
-
-.mega-links ul,
-.mega-right ul {
-  list-style: none;
-  padding: 0;
-}
-
-.mega-links li,
-.mega-right li {
-  margin: 12px 0;
-  opacity: 0;
-  transform: translateY(10px);
-  animation: fadeSlideUp 0.4s ease forwards;
-}
-
-.mega-links li:nth-child(1) { animation-delay: 0.05s; }
-.mega-links li:nth-child(2) { animation-delay: 0.1s; }
-.mega-links li:nth-child(3) { animation-delay: 0.15s; }
-.mega-links li:nth-child(4) { animation-delay: 0.2s; }
-.mega-links li:nth-child(5) { animation-delay: 0.25s; }
-
-.mega-right li:nth-child(1) { animation-delay: 0.3s; }
-.mega-right li:nth-child(2) { animation-delay: 0.35s; }
-.mega-right li:nth-child(3) { animation-delay: 0.4s; }
-.mega-right li:nth-child(4) { animation-delay: 0.45s; }
 
 .mega-links a,
 .mega-right a {
@@ -232,17 +183,12 @@ body {
   to { opacity: 1; transform: translateY(0); }
 }
 
+/* Responsive dropdown */
 @media (max-width: 900px) {
   .mega-content {
     grid-template-columns: 1fr;
     gap: 30px;
     text-align: center;
-  }
-
-  .mega-left,
-  .mega-links,
-  .mega-right {
-    align-items: center;
   }
 }
 
@@ -290,6 +236,7 @@ section {
   padding: 80px 20px;
   max-width: 1200px;
   margin: auto;
+  scroll-margin-top: 120px; /* ensures not hidden behind navbar */
 }
 
 section h2 {
@@ -298,6 +245,34 @@ section h2 {
   text-align: center;
   color: #222;
 }
+.explore-btn {
+  display: inline-block;
+  background-color: #f7c700; /* yellow */
+  color: #111827; /* dark text */
+  font-weight: 600;
+  font-size: 16px;
+  padding: 10px 24px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+/* Hover effect */
+.explore-btn:hover {
+  background-color: #ffd633; /* lighter yellow */
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Active / clicked */
+.explore-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
 
 /* About Section */
 .about-container {
