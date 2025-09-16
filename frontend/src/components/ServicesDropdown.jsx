@@ -17,14 +17,16 @@ function ServicesDropdown({ isOpen, onClose, containerRef }) {
     }
   }, [isOpen]);
 
-  // Outside OR inside click handler
+  // Outside click handler (only closes when clicking outside NAV + dropdown)
   useEffect(() => {
     function handleClickAnywhere(e) {
       const insideNavbar =
         containerRef?.current && containerRef.current.contains(e.target);
+      const insideDropdown =
+        dropdownRef?.current && dropdownRef.current.contains(e.target);
 
-      // ✅ Always close if clicked anywhere except navbar
-      if (!insideNavbar) {
+      // ✅ Close only if clicked outside navbar + dropdown
+      if (!insideNavbar && !insideDropdown) {
         onClose();
       }
     }
@@ -32,7 +34,8 @@ function ServicesDropdown({ isOpen, onClose, containerRef }) {
     if (isOpen) {
       document.addEventListener("mousedown", handleClickAnywhere);
     }
-    return () => document.removeEventListener("mousedown", handleClickAnywhere);
+    return () =>
+      document.removeEventListener("mousedown", handleClickAnywhere);
   }, [isOpen, onClose, containerRef]);
 
   // ESC close
@@ -54,19 +57,20 @@ function ServicesDropdown({ isOpen, onClose, containerRef }) {
       <div
         ref={dropdownRef}
         className={`mega-dropdown ${isOpen ? "open" : ""}`}
-        // ❌ no stopPropagation → any click inside will close
       >
         <div className="mega-content">
           <div className="mega-left">
             <h2>Our Services</h2>
             <p>
-              Discover our wide range of solutions designed to help your business grow.
+              Discover our wide range of solutions designed to help your
+              business grow.
             </p>
             <button
               className="explore-btn"
-              onClick={() => {
-                onClose();
+              onClick={(e) => {
+                e.stopPropagation(); // ✅ don’t trigger outside close
                 navigate("/explore");
+                onClose(); // ✅ close AFTER navigation
               }}
             >
               Explore
