@@ -1,28 +1,15 @@
 import React, { useState, useEffect } from "react";
 import "../CareerDropdown.css";
-import job1 from "../assets/career1.png";
-import job2 from "../assets/career1.png";
-
-const jobs = [
-  {
-    id: 1,
-    title: "UI/UX Intern",
-    type: "Remote (Unpaid)",
-    location: "Remote",
-    image: job1,
-    responsibilities: ["Build UI components", "Collaborate with designers"],
-    requirements: ["Figma"],
-    applyLink: "https://forms.gle/Ny25XhtL7MmtZa9z5",
-  },
-];
+import jobs from "../data/careerdata"; // Import job data
 
 function CareerDropdown({ isOpen, onClose }) {
   const [filter, setFilter] = useState("All");
 
   const filteredJobs =
-    filter === "All" ? jobs : jobs.filter((job) => job.type === filter);
+    filter === "All"
+      ? jobs
+      : jobs.filter((job) => job.type.includes(filter)); // Partial match filtering
 
-  // ✅ Close on ESC key
   useEffect(() => {
     const handleEsc = (e) => {
       if (e.key === "Escape") onClose();
@@ -39,10 +26,7 @@ function CareerDropdown({ isOpen, onClose }) {
 
   return (
     <div className="career-backdrop open" onClick={onClose}>
-      <div
-        className={`career-dropdown ${isOpen ? "open" : ""}`}
-        // ⚡ no stopPropagation here → clicks on blank dropdown area will close
-      >
+      <div className={`career-dropdown ${isOpen ? "open" : ""}`}>
         <div className="career-content">
           {/* Left Section */}
           <div className="career-left" onClick={onClose}>
@@ -64,9 +48,9 @@ function CareerDropdown({ isOpen, onClose }) {
                 onChange={(e) => setFilter(e.target.value)}
               >
                 <option value="All">All</option>
-                {/* <option value="Full-time">Full-time</option>
+                <option value="Full-time">Full-time</option>
                 <option value="Intern">Intern</option>
-                <option value="Remote">Remote</option> */}
+                <option value="Remote">Remote</option>
               </select>
             </div>
 
@@ -106,7 +90,7 @@ function CareerDropdown({ isOpen, onClose }) {
                     target="_blank"
                     rel="noreferrer"
                     className="apply-btn"
-                    onClick={(e) => e.stopPropagation()} // don’t close
+                    onClick={(e) => e.stopPropagation()} 
                   >
                     Apply Now
                   </a>

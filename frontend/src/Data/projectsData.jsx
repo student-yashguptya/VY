@@ -14,7 +14,14 @@ import proj2image4 from "../assets/dev_tool.ai_image4.jpeg";
 import proj2image5 from "../assets/dev_tool.ai_image5.jpeg";
 import proj2image6 from "../assets/dev_tool.ai_image6.jpeg";
 import proj3 from "../assets/LOGO Image.png";
-
+import proj3image1 from "../assets/patshala_guru.png";
+import proj3image2 from "../assets/patshala_guru1.png";
+import proj3image3 from "../assets/patshala_guru2.png";
+import proj3image4 from "../assets/patshala_guru3.png";
+import proj3image5 from "../assets/patshala_guru4.png";
+import proj3image6 from "../assets/patshala_guru5.png";
+import proj3image7 from "../assets/patshala_guru6.png";
+import proj3image8 from "../assets/patshala_guru7.png";
 
 
 const projectsData = [
@@ -36,7 +43,15 @@ const projectsData = [
       "Advanced reporting & analytics",
       "Secure & scalable architecture",
     ],
-    gallery: [proj1, projimage2, projimage3, projimage4, projimage5, projimage6, projimage7],
+    gallery: [
+      { img: proj1, type: "landscape" },
+      { img: projimage2, type: "landscape" },
+      { img: projimage3, type: "landscape" },
+      { img: projimage4, type: "landscape" },
+      { img: projimage5, type: "landscape" },
+      { img: projimage6, type: "landscape" },
+      { img: projimage7, type: "landscape" }
+    ],
     contact: {
       site: "https://lnkd.in/gh83Y5eH",
       emails: ["Placementhub9@gmail.com", "vysoftware@gmail.com"],
@@ -63,7 +78,14 @@ const projectsData = [
     "Exportable reports and instant ER diagrams",
     "Secure, scalable, and easy-to-integrate with modern developer workflows",
   ],
-  gallery: [proj2image1, proj2image2, proj2image3, proj2image4, proj2image5, proj2image6],
+  gallery: [
+    { img: proj2image1, type: "landscape" },
+    { img: proj2image2, type: "landscape" },
+    { img: proj2image3, type: "landscape" },
+    { img: proj2image4, type: "landscape" },
+    { img: proj2image5, type: "landscape" },
+    { img: proj2image6, type: "landscape" }
+  ],
   contact: {
     site: "https://lnkd.in/gh83Y5eH",
     emails: ["vysoftware@gmail.com"],
@@ -93,15 +115,20 @@ const projectsData = [
     "Personalized summaries and AI-assisted suggestions for continuous improvement"
   ],
   gallery: [
-    proj2image1, proj2image2, proj2image3, proj2image4, proj2image5, proj2image6
-  ],
+  { img: proj3image1, type: "portrait" }, 
+  { img: proj3image3, type: "portrait" }, 
+  { img: proj3image2, type: "portrait" },
+  { img: proj3image8, type: "portrait" },
+  { img: proj3image4, type: "portrait" },
+  { img: proj3image7, type: "portrait" },
+  { img: proj3image5, type: "portrait" },
+  { img: proj3image6, type: "portrait" }
+],
   contact: {
     site: "https://lnkd.in/gh83Y5eH",
     emails: ["vysoftware@gmail.com"],
   },
 }
-
-
 
 ];
 

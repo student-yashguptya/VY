@@ -179,15 +179,31 @@
 }
 .exp-gallery-img {
   flex: 0 0 auto;
-  width: 200px;
-  height: 130px;
-  object-fit: cover;
-  border-radius: 10px;
+  width: 330px;
+  height: 150px;
+  object-fit: cover;      /* For web screenshots */
+  /* border-radius: 10px; */
   box-shadow: 0 6px 20px rgba(0,0,0,0.12);
   transition: transform 0.3s, box-shadow 0.3s;
   cursor: pointer;
   scroll-snap-align: start;
+  background: #fff;
 }
+
+.exp-gallery-img-portrait {
+  flex: 0 0 auto;
+  width: 68px;
+  height: 150px;
+  object-fit: contain;    /* For app or portrait images/icons */
+  /* border-radius: 16px; */
+  box-shadow: 0 4px 16px rgba(0,0,0,0.10);
+  margin: auto;
+  background: #fff;
+  transition: transform 0.3s, box-shadow 0.3s;
+  cursor: pointer;
+  scroll-snap-align: start;
+}
+
 .exp-gallery-img:hover {
   transform: scale(1.1);
   box-shadow: 0 12px 32px rgba(0,0,0,0.2);

@@ -93,19 +93,22 @@ function Modal({ project, onClose }) {
         </section>
 
         {/* Gallery */}
-        <section className="exp-gallery">
-          <h3 className="exp-gallery-title">📸 Sneak Peek</h3>
-          <div className="exp-gallery-scroll">
-            {project.gallery.map((img, idx) => (
-              <img
-                key={idx}
-                src={img}
-                alt={`Screenshot ${idx + 1}`}
-                className="exp-gallery-img"
-              />
-            ))}
-          </div>
-        </section>
+<section className="exp-gallery">
+  <h3 className="exp-gallery-title">📸 Sneak Peek</h3>
+  <div className="exp-gallery-scroll">
+    {project.gallery.map((imgObj, idx) => (
+      <img
+        key={idx}
+        src={typeof imgObj === "string" ? imgObj : imgObj.img}
+        alt={`Screenshot ${idx + 1}`}
+        className={
+          (typeof imgObj === "string" ? "exp-gallery-img" :
+            imgObj.type === "portrait" ? "exp-gallery-img-portrait" : "exp-gallery-img")
+        }
+      />
+    ))}
+  </div>
+</section>
 
         {/* Contact */}
         <section className="exp-contact">
