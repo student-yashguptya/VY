@@ -4,26 +4,16 @@ import job1 from "../assets/career1.png";
 import job2 from "../assets/career1.png";
 
 const jobs = [
-  // {
-  //   id: 1,
-  //   title: "Frontend Developer",
-  //   type: "Full-time",
-  //   location: "Remote",
-  //   image: job1,
-  //   responsibilities: ["Build UI components", "Collaborate with designers"],
-  //   requirements: ["React.js", "CSS", "Team player"],
-  //   applyLink: "#",
-  // },
-  // {
-  //   id: 2,
-  //   title: "UI/UX Intern",
-  //   type: "Intern",
-  //   location: "Onsite",
-  //   image: job2,
-  //   responsibilities: ["Design wireframes", "User research"],
-  //   requirements: ["Figma", "Creativity"],
-  //   applyLink: "#",
-  // },
+  {
+    id: 1,
+    title: "UI/UX Intern",
+    type: "Remote (Unpaid)",
+    location: "Remote",
+    image: job1,
+    responsibilities: ["Build UI components", "Collaborate with designers"],
+    requirements: ["Figma"],
+    applyLink: "https://forms.gle/Ny25XhtL7MmtZa9z5",
+  },
 ];
 
 function CareerDropdown({ isOpen, onClose }) {
@@ -74,9 +64,9 @@ function CareerDropdown({ isOpen, onClose }) {
                 onChange={(e) => setFilter(e.target.value)}
               >
                 <option value="All">All</option>
-                <option value="Full-time">Full-time</option>
+                {/* <option value="Full-time">Full-time</option>
                 <option value="Intern">Intern</option>
-                <option value="Remote">Remote</option>
+                <option value="Remote">Remote</option> */}
               </select>
             </div>
 

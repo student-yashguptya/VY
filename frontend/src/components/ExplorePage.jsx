@@ -33,22 +33,22 @@ function ExplorePage() {
 }
 
 function ProjectCard({ project, onOpen }) {
+  // Pick the style class
+  const imgClass =
+    project.heroImgType === "portrait" ? "card-hero-img-portrait" : "card-hero-img";
+
   return (
     <div className="project-card" data-aos="fade-up">
       <div className="card-hero">
         <img
           src={project.heroImg}
           alt={`${project.title} Banner`}
-          className="card-hero-img"
+          className={imgClass}
         />
         <h2 className="card-title">{project.title}</h2>
         <p className="card-subtitle">{project.heroSubtitle}</p>
-
         <div className="card-actions">
-          <button
-            className="exp-btn"
-            onClick={() => alert("🚧 Service will be available soon!")}
-          >
+          <button className="exp-btn" onClick={() => alert("🚧 Service will be available soon!")}>
             Get a Demo
           </button>
           <button className="exp-btn secondary" onClick={onOpen}>
@@ -59,6 +59,7 @@ function ProjectCard({ project, onOpen }) {
     </div>
   );
 }
+
 
 
 function Modal({ project, onClose }) {

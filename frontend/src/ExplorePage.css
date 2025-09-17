@@ -12,6 +12,32 @@
 
 /* ---------------- HERO ---------------- */
 
+/* For website/screenshots: keep as is using existing .card-hero-img */
+
+.card-hero-img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;         /* will fill the box for landscape images */
+  border-radius: 10px;
+  margin-bottom: 16px;
+  display: block;
+  background: #fff;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+  transition: transform 0.4s ease;
+}
+
+/* For app icons or phone/portrait images */
+.card-hero-img-portrait {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;       /* centers icon, never stretches/crops */
+  border-radius: 18px;
+  margin: 22px auto 20px auto;
+  display: block;
+  background: #fff;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  transition: transform 0.4s ease;
+}
 
 .exp-hero {
   background: url('../assets/Dashboard.jpg') center/cover no-repeat;
