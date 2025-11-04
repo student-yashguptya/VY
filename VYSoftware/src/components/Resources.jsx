@@ -11,7 +11,7 @@ const resourcesData = [
   {
     id: 1,
     title: "Building Scalable Node.js Applications",
-    description: "A comprehensive guide to architecting production-ready Node.js applications with best practices and optimization techniques.",
+    description: "A comprehensive guide to architecting production-ready Node.js applications with best practices.",
     tag: "Engineering",
     category: "Guide",
     icon: FaBook,
@@ -21,7 +21,7 @@ const resourcesData = [
   {
     id: 2,
     title: "React Performance Optimization Techniques",
-    description: "Master advanced React patterns to build lightning-fast user interfaces and improve overall application performance.",
+    description: "Master advanced React patterns to build lightning-fast user interfaces and improve overall performance.",
     tag: "Frontend",
     category: "Tutorial",
     icon: FaVideo,
@@ -31,7 +31,7 @@ const resourcesData = [
   {
     id: 3,
     title: "MongoDB Database Design Patterns",
-    description: "Learn essential database design patterns and best practices for NoSQL databases using MongoDB at scale.",
+    description: "Learn essential database design patterns and best practices for NoSQL databases using MongoDB.",
     tag: "Engineering",
     category: "Documentation",
     icon: FaFileAlt,
@@ -41,7 +41,7 @@ const resourcesData = [
   {
     id: 4,
     title: "Modern UI Design Systems",
-    description: "Design scalable, maintainable design systems that work seamlessly across all your products and platforms.",
+    description: "Design scalable, maintainable design systems that work seamlessly across all your products.",
     tag: "Design",
     category: "Guide",
     icon: FaBook,
@@ -51,7 +51,7 @@ const resourcesData = [
   {
     id: 5,
     title: "Docker & Containerization Masterclass",
-    description: "Complete guide to containerizing applications and managing deployment pipelines with Docker and container orchestration.",
+    description: "Complete guide to containerizing applications and managing deployment pipelines with Docker.",
     tag: "DevOps",
     category: "Course",
     icon: FaVideo,
@@ -61,7 +61,7 @@ const resourcesData = [
   {
     id: 6,
     title: "AWS Cloud Infrastructure Essentials",
-    description: "Master AWS services and build highly available, scalable cloud infrastructure for your applications and services.",
+    description: "Master AWS services and build highly available, scalable cloud infrastructure for applications.",
     tag: "Cloud",
     category: "Guide",
     icon: FaBook,
@@ -71,7 +71,7 @@ const resourcesData = [
   {
     id: 7,
     title: "TypeScript Advanced Types",
-    description: "Deep dive into TypeScript's advanced type system to write more type-safe and maintainable code for production.",
+    description: "Deep dive into TypeScript's advanced type system to write more type-safe and maintainable code.",
     tag: "Frontend",
     category: "Tutorial",
     icon: FaCode,
@@ -81,7 +81,7 @@ const resourcesData = [
   {
     id: 8,
     title: "Kubernetes Orchestration Guide",
-    description: "Learn how to deploy, manage, and scale containerized applications using Kubernetes at production scale.",
+    description: "Learn how to deploy, manage, and scale containerized applications using Kubernetes.",
     tag: "DevOps",
     category: "Documentation",
     icon: FaFileAlt,
@@ -102,7 +102,7 @@ export default function Resources() {
   };
 
   return (
-    <div className="section resources-section">
+    <section className="section alt-soft">
       <div className="container">
         <SectionHeading 
           eyebrow="Featured" 
@@ -110,50 +110,43 @@ export default function Resources() {
           subtitle="Learn from our guides, tutorials, and case studies"
         />
 
-        <div className="resources-grid">
+        <div className="grid resources">
           {resourcesData.map((resource) => {
             const IconComponent = resource.icon;
             return (
               <article 
                 key={resource.id} 
-                className="resource-card"
+                className="resource"
               >
-                <div className="resource-image-wrapper">
+                <a 
+                  href="#"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleResourceClick(resource.id);
+                  }}
+                  className="img-wrap"
+                >
+                  <div className="resource-overlay">
+                    <button className="btn btn-primary">Read More</button>
+                  </div>
                   <img 
                     src={resource.image} 
                     alt={resource.title} 
                     loading="lazy"
-                    className="resource-image"
-                    decoding="async"
                   />
-                  <div className="resource-overlay">
-                    <button 
-                      className="resource-btn" 
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        handleResourceClick(resource.id);
-                      }}
-                    >
-                      Read More
-                      <FaArrowRight />
-                    </button>
-                  </div>
-                  <span className="resource-tag">{resource.tag}</span>
-                </div>
+                </a>
 
-                <div className="resource-content">
+                <div className="pad">
                   <div className="resource-header">
-                    <div className="resource-icon">
-                      <IconComponent />
-                    </div>
-                    <span className="resource-category">{resource.category}</span>
+                    <span className="pill">{resource.tag}</span>
+                    <div className="resource-category">{resource.category}</div>
                   </div>
 
-                  <h3 className="resource-title">{resource.title}</h3>
-                  <p className="resource-description">{resource.description}</p>
+                  <h3 className="line-clamp-2">{resource.title}</h3>
+                  <p className="muted">{resource.description}</p>
 
                   <div className="resource-footer">
-                    <span className="resource-date">{resource.date}</span>
+                    <span className="muted small">{resource.date}</span>
                   </div>
                 </div>
               </article>
@@ -162,20 +155,18 @@ export default function Resources() {
         </div>
 
         <div className="cta-banner">
-          <div className="cta-content">
-            <h2 className="cta-title">Hire the best developers and designers around!</h2>
-            <p className="cta-subtitle">Join our team and work on cutting-edge projects</p>
+          <div>
+            <h3>Hire the best developers and designers around!</h3>
+            <p className="muted">Join our team and work on cutting-edge projects</p>
           </div>
           <button 
-            className="cta-button"
+            className="btn btn-primary"
             onClick={handleApply}
-            aria-label="Apply now"
           >
             Apply Now
-            <FaArrowRight />
           </button>
         </div>
       </div>
-    </div>
+    </section>
   );
 }

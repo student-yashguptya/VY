@@ -26,7 +26,7 @@ const steps = [
     ]
   },
   {
-    title: "CompTech Event Management",
+    title: "Tech Event Management",
     subtitle: "Complete Event Lifecycle Automation",
     description: "We developed an end-to-end event management platform that handled 200+ participants, 15+ events, and real-time judging for CompTech 2024. The system integrated payment processing, live scoring, and automated result declaration.",
     impact: "Our platform achieved 90% process automation, eliminating bottlenecks and ensuring seamless execution of a large-scale technical festival with instant certificate generation and winner declaration.",

@@ -16,7 +16,7 @@ const cases = [
   {
     id: "event-management",
     tag: "Event Tech",
-    title: "CompTech Event System",
+    title: "Tech Event System",
     copy: "End-to-end event management handling 200+ registrations, automated payments, live judging, and real-time winner declaration.",
     image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=640&h=420&fit=crop",
     metrics: { participants: "200+", events: "15+", automation: "90%" }
