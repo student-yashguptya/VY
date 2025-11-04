@@ -3,83 +3,121 @@ import SectionHeading from "./SectionHeading.jsx";
 import Image2 from "../assets/Image2.png";
 import Image3 from "../assets/Image3.png";
 import Image4 from "../assets/Image4.png";
+import { FaQuoteLeft } from "react-icons/fa";
+import "./Process.css";
 
 const steps = [
   {
-    title: "Build the right team to scale",
-    points: [
-      "Finding the right talent is not easy. We help you find the talent that suits your needs, follows your processes, and sticks with you long term (not the case with freelancers).",
-      "Our delivery model helps you cut costs and deliver within budget.",
-    ],
-    quote:
-      "Simform is quick to identify larger problem with the Software so we decided to expand our scope to build new modules",
-    person: { name: "Jeewa markram", role: "CEO", avatar: "https://i.pravatar.cc/56?img=12" },
+    title: "Placement Hub ERP",
+    subtitle: "Streamlining Campus Recruitment",
+    description: "We built a comprehensive placement management system that connects 500+ students with 50+ companies. The platform automates the entire recruitment workflow, eliminating manual coordination and paper-based processes.",
+    impact: "Our delivery model ensured timely deployment with 60% reduction in placement cycle time while maintaining cost-efficiency and quality standards.",
+    quote: "The Placement Hub system transformed our entire recruitment process. What used to take weeks now happens in days. The platform's automation and transparency have been game-changers for our placement cell.",
+    person: { 
+      name: "Dr. Rajesh Kumar", 
+      role: "Training & Placement Head",
+      avatar: "https://i.pravatar.cc/150?img=12" 
+    },
     img: Image2,
+    stats: [
+      { label: "Students", value: "500+" },
+      { label: "Companies", value: "50+" },
+      { label: "Time Saved", value: "60%" }
+    ]
   },
   {
-    title: "Build the right team to scale",
-    points: [
-      "Finding the right talent is not easy. We help you find the talent that suits your needs, follows your processes, and sticks with you long term (not the case with freelancers).",
-      "Our delivery model helps you cut costs and deliver within budget.",
-    ],
-    quote:
-      "Simform is quick to identify larger problem with the Software so we decided to expand our scope to build new modules",
-    person: { name: "Jeewa markram", role: "CEO", avatar: "https://i.pravatar.cc/56?img=32" },
+    title: "CompTech Event Management",
+    subtitle: "Complete Event Lifecycle Automation",
+    description: "We developed an end-to-end event management platform that handled 200+ participants, 15+ events, and real-time judging for CompTech 2024. The system integrated payment processing, live scoring, and automated result declaration.",
+    impact: "Our platform achieved 90% process automation, eliminating bottlenecks and ensuring seamless execution of a large-scale technical festival with instant certificate generation and winner declaration.",
+    quote: "The Event Management System made organizing CompTech incredibly smooth. Real-time judging, instant leaderboard updates, and automated certificate generation were crowd favorites. We saved at least 50 hours of manual work!",
+    person: { 
+      name: "Priya Sharma", 
+      role: "Event Coordinator, CompTech Committee",
+      avatar: "https://i.pravatar.cc/150?img=32" 
+    },
     img: Image3,
+    stats: [
+      { label: "Participants", value: "200+" },
+      { label: "Events", value: "15+" },
+      { label: "Automation", value: "90%" }
+    ]
   },
   {
-    title: "Build the right team to scale",
-    points: [
-      "Finding the right talent is not easy. We help you find the talent that suits your needs, follows your processes, and sticks with you long term (not the case with freelancers).",
-      "Our delivery model helps you cut costs and deliver within budget.",
-    ],
-    quote:
-      "Simform is quick to identify larger problem with the Software so we decided to expand our scope to build new modules",
-    person: { name: "Jeewa markram", role: "CEO", avatar: "https://i.pravatar.cc/56?img=48" },
+    title: "Smart Classroom & Timetable",
+    subtitle: "Intelligent Scheduling & Resource Optimization",
+    description: "We engineered an AI-powered timetable generation system that manages 1000+ students across 50+ classrooms with zero scheduling conflicts. The intelligent algorithm considers faculty preferences, room capacity, and departmental constraints.",
+    impact: "Our system reduced timetable generation time from 3 weeks to just 2 hours, improved classroom utilization by 85%, and achieved 95% faculty satisfaction with optimized schedules.",
+    quote: "This system is a lifesaver! What used to take us 3 weeks now happens in 2 hours. The algorithm handles all the complex constraints we never thought possible to automate. It's given our academic team back their time.",
+    person: { 
+      name: "Prof. Anuj Singh", 
+      role: "Academic Coordinator",
+      avatar: "https://i.pravatar.cc/150?img=48" 
+    },
     img: Image4,
-  },
+    stats: [
+      { label: "Students", value: "1000+" },
+      { label: "Classrooms", value: "50+" },
+      { label: "Conflicts", value: "0%" }
+    ]
+  }
 ];
 
 export default function Process() {
   return (
-    <div className="section">
+    <div className="section process-section">
       <div className="container">
-        <SectionHeading eyebrow="Way of building" title="Great Software" />
+        <SectionHeading 
+          eyebrow="Way of building" 
+          title="Great Software" 
+          subtitle="Our journey from concept to production-ready solutions"
+        />
+        
         <div className="process-list">
           {steps.map((s, i) => (
-            <article key={i} className={`process-item ${i % 2 ? "reverse" : ""}`}>
-              <div className="process-copy">
-                <h3 className="process-title">{s.title}</h3>
-
-                <p className="muted">{s.points[0]}</p>
-                <p className="muted">{s.points[1]}</p>
-
-                <div className="process-quote">
-                  <span className="bar" />
-                  <p>
-                    <em>“{s.quote}”</em>
-                  </p>
+            <div 
+              key={i} 
+              className={`process-row ${i % 2 === 1 ? "reverse" : ""}`}
+            >
+              <div className="process-text-block">
+                <div className="step-indicator">
+                  <span className="step-number">{i + 1}</span>
                 </div>
-
-                <div className="process-person">
-                  <img src={s.person.avatar} alt={s.person.name} />
-                  <div>
-                    <strong>{s.person.name}</strong>
-                    <div className="muted small">{s.person.role}</div>
+                
+                <h2 className="step-title">{s.title}</h2>
+                <p className="step-subtitle">{s.subtitle}</p>
+                
+                <p className="step-description">{s.description}</p>
+                <p className="step-impact">{s.impact}</p>
+                
+                <div className="step-stats">
+                  {s.stats.map((stat, idx) => (
+                    <div key={idx} className="stat">
+                      <div className="stat-value">{stat.value}</div>
+                      <div className="stat-label">{stat.label}</div>
+                    </div>
+                  ))}
+                </div>
+                
+                <div className="testimonial-block">
+                  <div className="quote-header">
+                    <FaQuoteLeft className="quote-icon" />
+                    <p className="quote-text">"{s.quote}"</p>
+                  </div>
+                  <div className="testimonial-author">
+                    <img src={s.person.avatar} alt={s.person.name} className="avatar" />
+                    <div className="author-info">
+                      <div className="author-name">{s.person.name}</div>
+                      <div className="author-role">{s.person.role}</div>
+                    </div>
                   </div>
                 </div>
               </div>
-
-              <div className="process-media">
-                <div className="media-card">
-                  <img src={s.img} alt={s.title} />
-                  <span className="dot tl" />
-                  <span className="dot tr" />
-                  <span className="dot bl" />
-                  <span className="dot br" />
-                </div>
+              
+              <div className="process-image-block">
+                <img src={s.img} alt={s.title} className="step-image" />
               </div>
-            </article>
+            </div>
           ))}
         </div>
       </div>

@@ -101,15 +101,15 @@ const caseStudiesData = {
   },
 
   "event-management": {
-    title: "CompTech Event Management System",
+    title: "Event Management System",
     subtitle: "Complete Event Lifecycle Management Platform",
     tag: "Event Tech",
-    client: "CompTech Technical Fest, SRMS CET",
+    client: "Technical Fest, SRMS CET",
     duration: "3 months",
     year: "2024",
     heroImage: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1200&h=600&fit=crop",
     
-    overview: "CompTech Event System is an all-in-one platform designed for organizing technical festivals and competitions. It handles everything from participant registration and payment processing to live judging and automated winner declaration.",
+    overview: "Event System is an all-in-one platform designed for organizing technical festivals and competitions. It handles everything from participant registration and payment processing to live judging and automated winner declaration.",
     
     challenge: {
       title: "The Challenge",
