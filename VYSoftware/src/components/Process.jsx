@@ -1,8 +1,8 @@
 import React from "react";
 import SectionHeading from "./SectionHeading.jsx";
-import Image2 from "../assets/Image2.png";
-import Image3 from "../assets/Image3.png";
-import Image4 from "../assets/Image4.png";
+import Image2 from "../assets/image2.png";
+import Image3 from "../assets/image3.png";
+import Image4 from "../assets/image4.png";
 
 const steps = [
   {
