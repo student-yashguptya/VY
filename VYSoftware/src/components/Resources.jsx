@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import SectionHeading from "./SectionHeading.jsx";
 
 const posts = Array.from({length:8}).map((_,i)=>({
@@ -9,6 +10,7 @@ const posts = Array.from({length:8}).map((_,i)=>({
 }));
 
 export default function Resources() {
+  const navigate = useNavigate();
   return (
     <div className="section alt-soft">
       <div className="container">
@@ -31,9 +33,17 @@ export default function Resources() {
         <div className="cta-banner">
           <div>
             <h3>Hire the best developers and designers around!</h3>
-            <p className="muted">Start with a free discovery call.</p>
+          
           </div>
-          <a href="#" onClick={(e)=>e.preventDefault()} className="btn btn-primary">Book a call</a>
+          <button
+  as="a"
+  className="btn btn-primary"
+  onClick={() => window.open("https://forms.gle/Ny25XhtL7MmtZa9z5", "_blank", "noopener,noreferrer")}
+  type="button"
+>
+  Apply now
+</button>
+
         </div>
       </div>
     </div>

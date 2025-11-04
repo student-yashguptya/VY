@@ -106,13 +106,65 @@ h4{margin:.25rem 0 .5rem 0}
 .case h3{margin:6px 0 6px}
 
 .stacked{display:grid; gap:28px}
-.process{display:grid; grid-template-columns: 1.2fr 1fr; gap:24px; align-items:center}
-.process-img{width:100%; border-radius:var(--radius); box-shadow:var(--shadow)}
-.process-copy ul{margin:10px 0 0 0; padding:0 0 0 18px}
-.process-copy li{margin:6px 0}
-@media (max-width:900px){
-  .process{grid-template-columns:1fr}
+/* Process section — screenshot-matched layout */
+.process-list{
+  display:grid; gap:42px;
 }
+
+/* two-column with alternating layout */
+.process-item{
+  display:grid;
+  grid-template-columns: 1.05fr 1fr;
+  gap:34px; align-items:center;
+}
+.process-item.reverse{grid-template-columns: 1fr 1.05fr}
+.process-item.reverse .process-copy{order:2}
+.process-item.reverse .process-media{order:1}
+
+@media (max-width: 900px){
+  .process-item,
+  .process-item.reverse{grid-template-columns:1fr}
+  .process-item.reverse .process-copy,
+  .process-item.reverse .process-media{order:unset}
+}
+
+/* heading + paragraphs */
+.process-title{
+  font-size:clamp(1.05rem, 1.8vw, 1.25rem);
+  font-weight:800; margin:0 0 10px;
+}
+.process-copy p{margin:10px 0}
+.process-copy .small{font-size:.85rem}
+
+/* quote with pink accent */
+.process-quote{
+  margin:14px 0 14px; padding:10px 12px;
+  background:#fff; border:1px solid #f5d8e8; border-radius:10px;
+}
+.process-quote .bar{
+  display:inline-block; width:28px; height:3px; border-radius:3px;
+  background:#f72585; margin-bottom:6px;
+}
+
+/* person line */
+.process-person{display:flex; align-items:center; gap:10px; margin-top:8px}
+.process-person img{width:36px; height:36px; border-radius:999px; object-fit:cover}
+
+/* media card with colorful corner dots */
+.process-media .media-card{
+  position:relative; border-radius:16px; overflow:hidden;
+  box-shadow: var(--shadow); background:#fff;
+}
+.process-media img{display:block; width:100%; height:auto}
+.process-media .dot{
+  position:absolute; width:16px; height:16px; border-radius:999px;
+  background:linear-gradient(135deg, #ffb703, #6c5ce7);
+}
+.process-media .dot.tl{top:-8px; left:-8px}
+.process-media .dot.tr{top:-8px; right:18px; background:linear-gradient(135deg, #6c5ce7, #f72585)}
+.process-media .dot.bl{bottom:-8px; left:28px; background:linear-gradient(135deg, #f72585, #6c5ce7)}
+.process-media .dot.br{bottom:-8px; right:-8px; background:linear-gradient(135deg, #ffb703, #f72585)}
+
 
 .chip-row{display:flex; flex-wrap:wrap; gap:12px}
 .chip{padding:.5rem .75rem; border:1px dashed var(--border); border-radius:999px; background:#fff}
@@ -170,18 +222,28 @@ h4{margin:.25rem 0 .5rem 0}
   .nav-links a{padding:7px 8px}
 }
 
-/* Mobile menu (unchanged behavior) */
+/* Desktop-first: hide hamburger */
+.menu-btn{
+  display:none;
+  width:40px; height:40px;
+  border:1px solid var(--border); border-radius:10px; background:#fff;
+  position:absolute; right:16px; top:10px; z-index:60; /* top-right */
+}
+
+/* Mobile: show hamburger, drawer menu */
 @media (max-width: 900px){
   .menu-btn{display:inline-grid; place-content:center}
   .nav-links{
     position:fixed; inset:60px 12px auto 12px; background:#fff; border:1px solid var(--border);
     border-radius:16px; padding:10px; box-shadow:var(--shadow);
-    display:none; flex-direction:column; gap:6px; white-space:normal; justify-content:flex-start;
+    display:none; flex-direction:column; gap:6px;
+    white-space:normal; justify-content:flex-start;
   }
   .nav-links.open{display:flex}
   .cta-li{width:100%}
   .cta-li .btn{display:block; width:100%}
 }
+
 
 
 

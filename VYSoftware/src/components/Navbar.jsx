@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import useScrollSpy from "../hooks/useScrollSpy";
+import { useNavigate } from "react-router-dom";
 import companyLogo from "../assets/company logo.png"; // rename the file
 
 const links = [
   { id:"home", label:"Home" },
   { id:"services", label:"Services" },
-  { id:"clients", label:"Clients" },
+  //{ id:"clients", label:"Clients" },
   { id:"testimonials", label:"Reviews" },
   { id:"cases", label:"Case Studies" },
   { id:"process", label:"Process" },
@@ -15,6 +16,7 @@ const links = [
 ];
 
 export default function Navbar() {
+   const navigate = useNavigate();
   const [open, setOpen] = useState(false);
   const [elevated, setElevated] = useState(false);
   const activeId = useScrollSpy(links.map(l=>l.id), 120);
@@ -40,9 +42,7 @@ export default function Navbar() {
         </a>
 
         <button className="menu-btn" aria-label="Toggle menu" aria-expanded={open} onClick={()=>setOpen(v=>!v)}>
-          <span />
-          <span />
-          <span />
+          ☰
         </button>
 
         <ul className={`nav-links ${open ? "open" : ""}`}>
@@ -58,7 +58,7 @@ export default function Navbar() {
             </li>
           ))}
           <li className="cta-li">
-            <a className="btn btn-primary" href="#contact" onClick={(e)=>{e.preventDefault();handleNav("resources");}}>
+            <a className="btn btn-primary" type="button" onClick={()=>navigate("/contact")}>
               Get Started
             </a>
           </li>
