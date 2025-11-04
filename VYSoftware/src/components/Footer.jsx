@@ -1,6 +1,7 @@
-import React, {  useState } from "react";
+import React, { useState } from "react";
 import { FaLinkedin, FaInstagram, FaArrowRight, FaCheckCircle, FaExclamationCircle } from "react-icons/fa";
 import emailjs from "@emailjs/browser";
+import Logo from "../assets/company logo.png";
 import "./Footer.css";
 
 export default function Footer() {
@@ -31,7 +32,6 @@ export default function Footer() {
       setSubscribeStatus("success");
       setEmail("");
       setIsSubscribing(false);
-
       setTimeout(() => setSubscribeStatus(""), 5000);
     } catch (error) {
       console.error("Subscription error:", error);
@@ -59,7 +59,11 @@ export default function Footer() {
               href="#home"
               onClick={(e) => handleSmoothScroll(e, "home")}
             >
-              <span className="brand-badge">VY</span> Software
+              <img 
+                src={Logo} 
+                alt="VY Software Logo" 
+                className="brand-logo"
+              />
             </a>
             <p className="muted">Building reliable software with small, senior teams.</p>
             <div className="footer-socials-mobile">
