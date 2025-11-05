@@ -1,0 +1,250 @@
+/* Resource Detail Page */
+.resource-page {
+  background: var(--bg);
+}
+
+.res-hero {
+  padding: 80px 0 60px;
+  background: linear-gradient(180deg, var(--bg-alt-soft) 0%, var(--bg) 100%);
+}
+
+.res-hero-wrap {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.res-hero-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.res-desc {
+  font-size: 1.15rem;
+  line-height: 1.7;
+}
+
+.res-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.res-hero-art {
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+.res-hero-art img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Table of Contents */
+.res-toc {
+  position: sticky;
+  top: 60px;
+  z-index: 40;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  padding: 16px 0;
+  margin-bottom: 40px;
+}
+
+.res-toc-inner {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding: 4px 0;
+  scrollbar-width: none;
+}
+
+.res-toc-inner::-webkit-scrollbar {
+  display: none;
+}
+
+.toc-link {
+  appearance: none;
+  background: transparent;
+  border: 1px solid var(--border);
+  padding: 8px 16px;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--muted);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.toc-link:hover {
+  background: var(--bg-alt);
+  color: var(--text);
+}
+
+.toc-link.is-active {
+  background: var(--brand);
+  color: white;
+  border-color: var(--brand);
+}
+
+/* Content Sections */
+.res-content {
+  max-width: 860px;
+  margin: 0 auto;
+  padding-bottom: 80px;
+}
+
+.res-section {
+  margin-bottom: 60px;
+}
+
+.res-section.has-media {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: start;
+}
+
+.res-media {
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+.res-media img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.res-copy h2 {
+  margin: 0 0 20px;
+  font-size: clamp(1.4rem, 2.5vw, 1.8rem);
+}
+
+.res-copy p {
+  margin: 16px 0;
+  font-size: 1.05rem;
+  line-height: 1.8;
+}
+
+.res-bullets {
+  margin: 24px 0;
+  padding-left: 24px;
+}
+
+.res-bullets li {
+  margin: 12px 0;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--muted);
+}
+
+.res-callout {
+  margin: 24px 0;
+  padding: 20px 24px;
+  background: linear-gradient(135deg, rgba(108, 92, 231, 0.08) 0%, rgba(247, 37, 133, 0.05) 100%);
+  border-left: 4px solid var(--brand);
+  border-radius: 8px;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--text);
+  font-weight: 500;
+}
+
+.res-code {
+  margin: 24px 0;
+  padding: 20px 24px;
+  background: #1e1e1e;
+  border-radius: 12px;
+  overflow-x: auto;
+  box-shadow: var(--shadow);
+}
+
+.res-code code {
+  font-family: 'Monaco', 'Courier New', monospace;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: #d4d4d4;
+}
+
+.res-divider {
+  margin: 60px 0;
+  border: none;
+  border-top: 1px solid var(--border);
+}
+
+/* Related Resources */
+.res-related {
+  margin-top: 60px;
+}
+
+.res-related h3 {
+  margin-bottom: 32px;
+  font-size: clamp(1.4rem, 2.5vw, 1.8rem);
+}
+
+/* Reveal Animation */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .res-hero-wrap {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .res-section.has-media {
+    grid-template-columns: 1fr;
+  }
+
+  .res-toc {
+    top: 0;
+  }
+}
+
+@media (max-width: 640px) {
+  .res-hero {
+    padding: 60px 0 40px;
+  }
+
+  .res-meta {
+    gap: 8px;
+    font-size: 0.85rem;
+  }
+
+  .res-content {
+    padding-bottom: 60px;
+  }
+
+  .res-section {
+    margin-bottom: 40px;
+  }
+
+  .res-code {
+    padding: 16px;
+    font-size: 0.85rem;
+  }
+
+  .res-callout {
+    padding: 16px 18px;
+    font-size: 0.95rem;
+  }
+}

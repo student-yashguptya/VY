@@ -1,7 +1,7 @@
-// src/components/ResourceDetail.jsx
 import React, { useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { getResourceById, getRelatedResources } from "./resourcesData";
+import "./ResourceDetail.css";
 
 export default function ResourceDetail() {
   const { id } = useParams();
@@ -9,9 +9,12 @@ export default function ResourceDetail() {
   const res = getResourceById(id);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [id]);
+
+  useEffect(() => {
     if (!res) return;
 
-    // Fade-up reveal animation
     const obs = new IntersectionObserver(
       (entries) => {
         entries.forEach((e) => {
@@ -24,7 +27,6 @@ export default function ResourceDetail() {
     return () => obs.disconnect();
   }, [res]);
 
-  // Active TOC section highlight
   useEffect(() => {
     if (!res) return;
 
@@ -34,6 +36,7 @@ export default function ResourceDetail() {
     const onScroll = () => {
       let current = "";
       sections.forEach((sec) => {
+        if (!sec) return;
         const rect = sec.getBoundingClientRect();
         if (rect.top <= 120 && rect.bottom >= 120) current = sec.id;
       });
@@ -56,9 +59,10 @@ export default function ResourceDetail() {
     return (
       <div className="section">
         <div className="container">
-          <p className="muted">Resource not found.</p>
-          <button className="btn" onClick={() => navigate(-1)}>
-            Go back
+          <h2>Resource not found</h2>
+          <p className="muted">The resource you're looking for doesn't exist.</p>
+          <button className="btn btn-primary" onClick={() => navigate("/")}>
+            Go back home
           </button>
         </div>
       </div>
@@ -76,12 +80,12 @@ export default function ResourceDetail() {
 
   return (
     <div className="resource-page">
-      <header className="res-hero">
+      <header className="res-hero section">
         <div className="container res-hero-wrap">
           <div className="res-hero-copy reveal">
-            <div className="eyebrow">{res.category}</div>
+            <span className="eyebrow">{res.category}</span>
             <h1>{res.title}</h1>
-            <p className="muted">{res.description}</p>
+            <p className="muted res-desc">{res.description}</p>
             <div className="res-meta">
               <span className="pill">{res.tag}</span>
               <span className="muted small">{res.date}</span>
@@ -149,15 +153,25 @@ export default function ResourceDetail() {
         <hr className="res-divider" />
 
         <section className="res-related">
-          <h3>Related resources</h3>
-          <div className="res-related-grid">
+          <h3>Related Resources</h3>
+          <div className="grid resources">
             {related.map((r) => (
               <article
                 key={r.id}
-                className="res-related-card"
-                onClick={() => navigate(`/resource/${r.id}`)}
+                className="resource"
+                onClick={() => {
+                  navigate(`/resource/${r.id}`);
+                  window.scrollTo(0, 0);
+                }}
+                style={{ cursor: "pointer" }}
               >
-                <img src={r.image} alt={r.title} />
+                <a
+                  href="#"
+                  onClick={(e) => e.preventDefault()}
+                  className="img-wrap"
+                >
+                  <img src={r.image} alt={r.title} loading="lazy" />
+                </a>
                 <div className="pad">
                   <span className="pill ghost">{r.tag}</span>
                   <h4 className="line-clamp-2">{r.title}</h4>

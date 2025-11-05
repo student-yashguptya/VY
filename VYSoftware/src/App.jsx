@@ -5,12 +5,13 @@ import Contactpage from "./components/ContactForm.jsx";
 import CaseStudyDetail from "./components/CaseStudyDetail.jsx";
 import ServiceDetail from "./components/ServiceDetail.jsx";
 import ResourceDetail from "./components/ResourceDetail.jsx"; 
-
+import Career from "./components/Career.jsx";
 export default function App() {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/contact" element={<Contactpage />} />
+         <Route path="/career" element={<Career />} />
       <Route path="/case-study/:id" element={<CaseStudyDetail />} />
       <Route path="/service/:id" element={<ServiceDetail />} />
       <Route path="/resource/:id" element={<ResourceDetail />} />
